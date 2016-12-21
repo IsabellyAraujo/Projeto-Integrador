@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8911AEBF-9918-493B-B00C-76917CA10385}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Projeto_Integrador</RootNamespace>
+    <AssemblyName>Projeto Integrador</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AcessoPublico\Cadastro.aspx" />
+    <Content Include="AcessoPublico\Entrar.aspx" />
+    <Content Include="AcessoPublico\Index.aspx" />
+    <Content Include="AcessoPublico\WebForm1.aspx" />
+    <Content Include="Agenda.aspx" />
+    <Content Include="AlterarSenha.aspx" />
+    <Content Include="Boletim.aspx" />
+    <Content Include="Config2.aspx" />
+    <Content Include="PaginasAjuda\AjudaAgenda.aspx" />
+    <Content Include="PaginasAjuda\AjudaBoletim.aspx" />
+    <Content Include="PaginasAjuda\AjudaConfig.aspx" />
+    <Content Include="PaginasAjuda\AjudaMochila.aspx" />
+    <Content Include="PaginasAjuda\AjudaSalas.aspx" />
+    <Content Include="AnotacaoETarefa.aspx" />
+    <Content Include="App_Themes\css\animate.min.css" />
+    <Content Include="App_Themes\css\bootstrap.min.css" />
+    <Content Include="App_Themes\css\font-awesome.min.css" />
+    <Content Include="App_Themes\css\lightbox.css" />
+    <Content Include="App_Themes\css\main.css" />
+    <Content Include="App_Themes\css\prettyPhoto.css" />
+    <Content Include="App_Themes\css\responsive.css" />
+    <Content Include="Config.aspx" />
+    <Content Include="CriarSala.aspx" />
+    <Content Include="EntrarSala.aspx" />
+    <Content Include="Home.aspx" />
+    <Content Include="Imagens\config.png" />
+    <Content Include="Imagens\home.png" />
+    <Content Include="Imagens\icon.png" />
+    <Content Include="Imagens\logo.png" />
+    <Content Include="Mochila.aspx" />
+    <Content Include="PaginasAjuda\AjudaAnotacaoETarefa.aspx" />
+    <Content Include="Sala.aspx" />
+    <Content Include="Salas.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AcessoPublico\Cadastro.aspx.cs">
+      <DependentUpon>Cadastro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AcessoPublico\Cadastro.aspx.designer.cs">
+      <DependentUpon>Cadastro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AcessoPublico\Entrar.aspx.cs">
+      <DependentUpon>Entrar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AcessoPublico\Entrar.aspx.designer.cs">
+      <DependentUpon>Entrar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AcessoPublico\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AcessoPublico\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AcessoPublico\MasterPagePublica.Master.cs">
+      <DependentUpon>MasterPagePublica.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AcessoPublico\MasterPagePublica.Master.designer.cs">
+      <DependentUpon>MasterPagePublica.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AcessoPublico\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AcessoPublico\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agenda.aspx.cs">
+      <DependentUpon>Agenda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agenda.aspx.designer.cs">
+      <DependentUpon>Agenda.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AlterarSenha.aspx.cs">
+      <DependentUpon>AlterarSenha.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AlterarSenha.aspx.designer.cs">
+      <DependentUpon>AlterarSenha.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Boletim.aspx.cs">
+      <DependentUpon>Boletim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Boletim.aspx.designer.cs">
+      <DependentUpon>Boletim.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Config2.aspx.cs">
+      <DependentUpon>Config2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Config2.aspx.designer.cs">
+      <DependentUpon>Config2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaginasAjuda\AjudaAgenda.aspx.cs">
+      <DependentUpon>AjudaAgenda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaginasAjuda\AjudaAgenda.aspx.designer.cs">
+      <DependentUpon>AjudaAgenda.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaginasAjuda\AjudaBoletim.aspx.cs">
+      <DependentUpon>AjudaBoletim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaginasAjuda\AjudaBoletim.aspx.designer.cs">
+      <DependentUpon>AjudaBoletim.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaginasAjuda\AjudaConfig.aspx.cs">
+      <DependentUpon>AjudaConfig.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaginasAjuda\AjudaConfig.aspx.designer.cs">
+      <DependentUpon>AjudaConfig.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaginasAjuda\AjudaMochila.aspx.cs">
+      <DependentUpon>AjudaMochila.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaginasAjuda\AjudaMochila.aspx.designer.cs">
+      <DependentUpon>AjudaMochila.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaginasAjuda\AjudaSalas.aspx.cs">
+      <DependentUpon>AjudaSalas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaginasAjuda\AjudaSalas.aspx.designer.cs">
+      <DependentUpon>AjudaSalas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AnotacaoETarefa.aspx.cs">
+      <DependentUpon>AnotacaoETarefa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AnotacaoETarefa.aspx.designer.cs">
+      <DependentUpon>AnotacaoETarefa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Config.aspx.cs">
+      <DependentUpon>Config.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Config.aspx.designer.cs">
+      <DependentUpon>Config.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CriarSala.aspx.cs">
+      <DependentUpon>CriarSala.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CriarSala.aspx.designer.cs">
+      <DependentUpon>CriarSala.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\DALAnotacao.cs" />
+    <Compile Include="DAL\DALMochila.cs" />
+    <Compile Include="DAL\DALSala.cs" />
+    <Compile Include="DAL\DALTarefa.cs" />
+    <Compile Include="DAL\DALUsuario.cs" />
+    <Compile Include="EntrarSala.aspx.cs">
+      <DependentUpon>EntrarSala.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EntrarSala.aspx.designer.cs">
+      <DependentUpon>EntrarSala.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage.Master.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage.Master.designer.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Mochila.aspx.cs">
+      <DependentUpon>Mochila.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mochila.aspx.designer.cs">
+      <DependentUpon>Mochila.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Anotacao.cs" />
+    <Compile Include="Modelo\Mochila.cs" />
+    <Compile Include="Modelo\Sala.cs" />
+    <Compile Include="Modelo\Tarefa.cs" />
+    <Compile Include="Modelo\Usuario.cs" />
+    <Compile Include="PaginasAjuda\AjudaAnotacaoETarefa.aspx.cs">
+      <DependentUpon>AjudaAnotacaoETarefa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaginasAjuda\AjudaAnotacaoETarefa.aspx.designer.cs">
+      <DependentUpon>AjudaAnotacaoETarefa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaginasAjuda\MasterPageAjuda.Master.cs">
+      <DependentUpon>MasterPageAjuda.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaginasAjuda\MasterPageAjuda.Master.designer.cs">
+      <DependentUpon>MasterPageAjuda.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sala.aspx.cs">
+      <DependentUpon>Sala.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sala.aspx.designer.cs">
+      <DependentUpon>Sala.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Salas.aspx.cs">
+      <DependentUpon>Salas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Salas.aspx.designer.cs">
+      <DependentUpon>Salas.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AcessoPublico\Web.config" />
+    <Content Include="MasterPage.Master" />
+    <Content Include="AcessoPublico\MasterPagePublica.Master" />
+    <Content Include="PaginasAjuda\MasterPageAjuda.Master" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:58402/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

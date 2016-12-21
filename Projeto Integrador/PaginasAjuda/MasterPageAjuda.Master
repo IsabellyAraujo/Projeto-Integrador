@@ -1,0 +1,113 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPageAjuda.master.cs" Inherits="Projeto_Integrador.PaginasAjuda.MasterPageAjuda" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Ajuda | Improve</title>
+    <link rel="shortcut icon" href="../Imagens/ico/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../Imagens/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../Imagens/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../Imagens/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../Imagens/ico/apple-touch-icon-57-precomposed.png">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header id="header">
+            <div class="navbar navbar-inverse" role="banner">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                        <a class="navbar-brand" href="..\Home.aspx">
+                            <h1>
+                                <img src="../Imagens/home.png" alt="logo" /></h1>
+                        </a>
+
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="..\Agenda.aspx">Agenda</a></li>
+                            <li><a href="..\AnotacaoETarefa.aspx">Tarefas e Anotações</a></li>
+                            <li><a href="..\Boletim.aspx">Boletim</a></li>
+                            <li><a href="..\Mochila.aspx">Mochila</a></li>
+                            <li><a href="..\Salas.aspx">Salas</a></li>
+                            <li class="dropdown active">
+                                <a href="#">
+                                    <asp:ImageButton ID="ImageButton1" runat="server" class="img-circle" alt="Foto do perfil" Height="30" PostBackUrl="~/Config.aspx" />
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul role="menu" class="sub-menu">
+                                    <li><a class="active" href="..\AlterarSenha.aspx">Alterar Senha</a></li>
+                                    <li><a href="AjudaBoletim.aspx">Ajuda</a></li>
+                                    <li>
+                                        <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutText="Sair" LogoutPageUrl="~/AcessoPublico/Index.aspx" LogoutAction="Redirect" />
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section id="services">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-2">
+                        <ul class="portfolio-filter text-center">
+                            <li><a class="btn btn-default" href="AjudaBoletim.aspx">Boletim</a></li>
+                        </ul>
+                        <ul class="portfolio-filter text-center">
+                            <li><a class="btn btn-default" href="AjudaAnotacaoETarefa.aspx">Anotação e Tarefa</a></li>
+                        </ul>
+                        <ul class="portfolio-filter text-center">
+                            <li><a class="btn btn-default" href="AjudaSalas.aspx">Sala</a></li>
+                        </ul>
+                        <ul class="portfolio-filter text-center">
+                            <li><a class="btn btn-default" href="AjudaMochila.aspx">Mochila</a></li>
+                        </ul>
+                        <ul class="portfolio-filter text-center">
+                            <li><a class="btn btn-default" href="AjudaConfig.aspx">Configurações</a></li>
+                        </ul>
+
+                        <ul class="portfolio-filter text-center">
+                            <li><a class="btn btn-default" href="AjudaAgenda.aspx">Agenda</a></li>
+                        </ul>
+                    </div>
+                    <div class="conteudoajuda col-md-6 col-md-offset-2 col-sm-12">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer id="footer">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <div class="copyright-text text-center">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/lightbox.min.js"></script>
+        <script type="text/javascript" src="js/wow.min.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+
+    </form>
+</body>
+</html>
