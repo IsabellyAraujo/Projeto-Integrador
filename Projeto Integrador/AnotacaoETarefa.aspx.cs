@@ -13,5 +13,11 @@ namespace Projeto_Integrador
         {
 
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            TextBox1.Visible = true;
+            BotaoSalvar1.Visible = true;
+        }
     }
 }

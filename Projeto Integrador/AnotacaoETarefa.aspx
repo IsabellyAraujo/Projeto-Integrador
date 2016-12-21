@@ -11,17 +11,17 @@
 				</div>
 				<div class="tarefa col-sm-10 col-sm-offset-1 col-md-4 wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
 				<div class="botaocriaranotacao col-sm-12 col-md-12">
-					<a href="#" onclick="abrefecha('divum');">
-					<button type="button" class="btn btn-submitcriar">CRIAR</button>
-					</a>
+					<asp:Button ID="Button1" runat="server" Text="CRIAR" class="btn btn-submitcriar" OnClick="Button1_Click" />
 					</div>
 					<div id="divum" style="display:none; padding-top:2%;">
 						<input type="text" class="form-control" id="textoanotacao">
 						<button type="submit" class="btn btn-submitsalvar">SALVAR</button>
 					</div>
 					<div class="texto col-md-12 col-sm-12">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-						Etiam eget ligula eu lectus lobortis condimentum.<br>		
+						<asp:TextBox ID="TextBox1" runat="server" placeholder="Digite sua anotação" Visible="False" Width="100%"></asp:TextBox>
+                        <br />
+                        <asp:Button ID="BotaoSalvar1" runat="server"  class="btn btn-submitsalvar" Text="Salvar" Visible="False" />
+                        <br>		
 					</div>
 					<div class="configtexto col-md-12 col-sm-12">
 						<a href="#"><img src="Imagens/fav.png" height="30"></a>&nbsp;&nbsp;&nbsp;
