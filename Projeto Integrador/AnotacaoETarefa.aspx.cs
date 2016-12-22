@@ -92,5 +92,16 @@ namespace Projeto_Integrador
             DALAnotacao.Delete(anotacao);
             Response.Redirect("~/AnotacaoETarefa.aspx");
         }
+
+        protected void LinkButtonEditarAnotacoes_Click(object sender, EventArgs e)
+        {
+            //foreach (DataListItem teste in DataList1.Controls) 
+            //{
+            //    if (teste.ID == "LabelTituloAnotacoesEditar" || teste.ID == "LabelDescricaoAnotacoesEditar")
+            //        teste.Visible = true;
+            //}
+            //TextBoxAnotacoesDescricaoEditar.Visible = true;
+            //TextBoxAnotacoesTitulooEditar.Visible = true;
+        }
     }
 }
