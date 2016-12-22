@@ -10,15 +10,15 @@
 				<h1>ANOTAÇÕES</h1>
 				</div>
 				<div class="tarefa col-sm-10 col-sm-offset-1 col-md-4 wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
-				<div class="botaocriaranotacao col-sm-12 col-md-12">
-					<asp:Button ID="Button1" runat="server" Text="CRIAR" class="btn btn-submitcriar" OnClick="Button1_Click" />
+				    <div class="botaocriaranotacao col-sm-12 col-md-12">
+					    <asp:Button ID="Button1" runat="server" Text="CRIAR" class="btn btn-submitcriar" OnClick="Button1_Click" />
 					</div>
 					<div id="divum" style="display:none; padding-top:2%;">
 						<input type="text" class="form-control" id="textoanotacao">
 						<button type="submit" class="btn btn-submitsalvar">SALVAR</button>
 					</div>
 					<div class="texto col-md-12 col-sm-12">
-						<asp:TextBox ID="TextBox1" runat="server" placeholder="Digite sua anotação" Visible="False" Width="100%"></asp:TextBox>
+						<asp:TextBox ID="TextBox1" runat="server" placeholder="Digite sua anotação" Visible="False" Width="100%" TextMode="MultiLine"></asp:TextBox>
                         <br />
                         <asp:Button ID="BotaoSalvar1" runat="server"  class="btn btn-submitsalvar" Text="Salvar" Visible="False" />
                         <br>		
@@ -44,22 +44,44 @@
 				</div>
 				<div class="anotacao col-sm-12 col-md-4 col-md-offset-2 wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
 					<div class="botaocriaranotacao col-sm-12 col-md-12">
-					<a href="#" onclick="abrefecha('divdois');">
-					<button type="button" class="btn btn-submitcriar">CRIAR</button>
-					</a>
-					</div>
-					<div id="divdois" style="display:none; padding-top:2%;">
-						<input type="text" class="form-control" id="textoanotacao">
-						<button type="submit" class="btn btn-submitsalvar">SALVAR</button>
-					</div>
+                        <asp:Button ID="ButtonAnotacoes" runat="server" Text="CRIAR" class="btn btn-submitcriar" OnClick="ButtonAnotacoes_Click" />
+
+                    
 					<div class="texto col-md-12 col-sm-12">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-						Etiam eget ligula eu lectus lobortis condimentum.<br>		
-					</div>
-					<div class="configtexto col-md-12 col-sm-12">
-						<a href="#"><img src="Imagens/fav.png" height="30"></a>&nbsp;&nbsp;&nbsp;
-						<a href="#">EDITAR</a>&nbsp;&nbsp;&nbsp;
-						<a href="#">EXCLUIR</a>		
+                        &nbsp;<asp:Label ID="LabelAnotacoesTitulo" runat="server" Text="Titulo" Visible="False"></asp:Label>
+                        <asp:TextBox ID="TextBoxAnotacoesTitulo" runat="server" Visible="False"></asp:TextBox>
+                        <br />
+                        <asp:Label ID="LabelAnotacoesDescricao" runat="server" Text="Anotação" Visible="False"></asp:Label>
+                        </div>
+						<asp:TextBox ID="TextBoxAnotacoesDescricao" runat="server" placeholder="Digite sua anotação" Visible="False" Width="100%" TextMode="MultiLine"></asp:TextBox>
+                        <br />
+                        <asp:Button ID="ButtonSalvarAnotacoes" runat="server"  class="btn btn-submitsalvar" Text="Salvar" Visible="False" OnClick="ButtonSalvarAnotacoes_Click" />
+                        <asp:DataList ID="DataList1" runat="server" DataSourceID="ObjectDataSource1">
+                            <ItemTemplate>
+                                <asp:Label ID="LabelAnotacoesId" runat="server" OnPreRender="LabelAnotacoesId_PreRender" Text='<%# Eval("id") %>'></asp:Label>
+                                <asp:Label ID="tituloLabel" runat="server" Text='<%# Eval("titulo") %>' Font-Bold="True" />
+                                <br />
+                                <asp:Label ID="descricaoLabel" runat="server" Text='<%# Eval("descricao") %>' />
+                                <br />
+                                <a href="#">
+                                <asp:Image ID="ImageFavorito" runat="server" ImageUrl="~/Imagens/fav.png" Width="30" Height="30" OnPreRender="ImageFavorito_PreRender" />
+                                
+					            <div class="configtexto col-md-12 col-sm-12">
+					            </div>
+                                &nbsp;<asp:ImageButton ID="ImageButtonFavoritarAnotacoes" runat="server" ImageUrl="~/Imagens/fav.png" OnClick="ImageButtonFavoritarAnotacoes_Click" OnPreRender="ImageButtonFavoritarAnotacoes_PreRender" Width="30px" />
+                                &nbsp;&nbsp;
+                                <asp:LinkButton ID="LinkButtonEditarAnotacoes" runat="server" OnPreRender="LinkButtonEditarAnotacoes_PreRender">EDITAR</asp:LinkButton>
+                                &nbsp;
+                                <asp:LinkButton ID="LinkButtonExcluirAnotacoes" runat="server" OnClick="LinkButtonExcluirAnotacoes_Click" OnPreRender="LinkButtonExcluirAnotacoes_PreRender">EXCLUIR</asp:LinkButton>
+                                </div>
+                            </ItemTemplate>
+                        </asp:DataList>
+                        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="SelectAll" TypeName="Projeto_Integrador.DAL.DALAnotacao">
+                            <SelectParameters>
+                                <asp:SessionParameter Name="user_id" SessionField="userId" Type="String" />
+                            </SelectParameters>
+                        </asp:ObjectDataSource>
+                        <br>		
 					</div>
 					 <div class="portfolio-pagination">
                     <ul class="pagination">

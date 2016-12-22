@@ -65,6 +65,7 @@
     <Content Include="AlterarSenha.aspx" />
     <Content Include="Boletim.aspx" />
     <Content Include="Config2.aspx" />
+    <Content Include="Imagens\fav.png" />
     <Content Include="PaginasAjuda\AjudaAgenda.aspx" />
     <Content Include="PaginasAjuda\AjudaBoletim.aspx" />
     <Content Include="PaginasAjuda\AjudaConfig.aspx" />

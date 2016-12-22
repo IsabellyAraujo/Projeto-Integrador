@@ -27,8 +27,8 @@ namespace Projeto_Integrador.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand("sp_listarTodasAnotacoesUsuario", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
+            SqlCommand cmd = new SqlCommand("Select id, titulo, descricao, favorito, usuario_id from Anotacao where usuario_id = @usuario_id order by favorito desc", conn);
+            //cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@usuario_id", user_id);
 
             SqlDataReader dr = cmd.ExecuteReader();
@@ -37,14 +37,12 @@ namespace Projeto_Integrador.DAL
             {
                 while (dr.Read())
                 {
-                    aAnotacao = new Modelo.Anotacao(
-                        dr.GetString(0),
-                        dr.GetString(1),
-                        dr.GetString(2),
-                        dr.GetBoolean(3),
-                        dr.GetDateTime(4),
-                        dr.GetString(5)
-                        );
+                    aAnotacao = new Modelo.Anotacao( 
+                        Convert.ToInt32(dr["id"]), 
+                        dr["titulo"].ToString(), 
+                        dr["descricao"].ToString(), 
+                        Convert.ToBoolean(dr["favorito"]),
+                        dr["usuario_id"].ToString());                    
                     aListAnotacao.Add(aAnotacao);
                 }
             }
@@ -70,16 +68,39 @@ namespace Projeto_Integrador.DAL
             Modelo.Anotacao aAnotacao = new Modelo.Anotacao(
                         dr.GetString(0),
                         dr.GetString(1),
-                        dr.GetString(2),
-                        dr.GetBoolean(3),
-                        dr.GetDateTime(4),
-                        dr.GetString(5)
+                        dr.GetBoolean(2),
+                        dr.GetString(3)
                         );
 
             dr.Close();
             conn.Close();
 
             return aAnotacao;
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public bool SelectValidarFavorito(int id)
+        {
+            bool validar = true;
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+            SqlCommand com = conn.CreateCommand();
+            SqlCommand cmd = new SqlCommand("Select favorito FROM Anotacao where id = @id", conn);
+            cmd.Parameters.AddWithValue("@id", id);
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    if (Convert.ToInt32(dr["favorito"]) == 0)
+                    {
+                        validar = false;
+                    }
+                }
+            }
+            dr.Close();
+            conn.Close();
+            return validar;
         }
 
         [DataObjectMethod(DataObjectMethodType.Delete)]
@@ -123,6 +144,19 @@ namespace Projeto_Integrador.DAL
             cmd.Parameters.AddWithValue("@titulo", obj.titulo);
             cmd.Parameters.AddWithValue("@descricao", obj.descricao);
             cmd.Parameters.AddWithValue("@favorito", obj.favorito);
+
+            cmd.ExecuteNonQuery();
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Update)]
+        public void UpdateFavorito(int favorito, int id)
+        {
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("Update Anotacao set favorito = @favorito where id = @id", conn);
+            cmd.Parameters.AddWithValue("@favorito", favorito);
+            cmd.Parameters.AddWithValue("@id", id);
 
             cmd.ExecuteNonQuery();
         }
