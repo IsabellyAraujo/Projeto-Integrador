@@ -15,13 +15,7 @@ namespace Projeto_Integrador
         {
 
         }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            TextBox1.Visible = true;
-            BotaoSalvar1.Visible = true;
-        }
-
+        //ANOTAÇÃO
         protected void ButtonAnotacoes_Click(object sender, EventArgs e)
         {
             LabelAnotacoesDescricao.Visible = true;
@@ -102,6 +96,23 @@ namespace Projeto_Integrador
             //}
             //TextBoxAnotacoesDescricaoEditar.Visible = true;
             //TextBoxAnotacoesTitulooEditar.Visible = true;
+        }
+        //TAREFA
+        protected void ButtonTarefas_Click(object sender, EventArgs e)
+        {
+            TextBoxTarefaDescricao.Visible = true;
+            ButtonSalvarTarefas.Visible = true;
+        }
+        protected void ButtonSalvarTarefas_Click(object sender, EventArgs e)
+        {
+            DAL.DALTarefa DALTarefa = new DAL.DALTarefa();
+            Modelo.Tarefa tarefa = new Modelo.Tarefa(TextBoxTarefaDescricao.Text, false, false, Session["userID"].ToString());
+            DALTarefa.Insert(tarefa);
+
+            Response.Redirect("~/AnotacaoETarefa.aspx");
+
+
+            TextBoxTarefaDescricao.Visible = false;
         }
     }
 }

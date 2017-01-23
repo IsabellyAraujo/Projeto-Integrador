@@ -51,7 +51,7 @@ namespace Projeto_Integrador
             TableRow tr;
             TableCell tc;
             Button botao;
-            TextBox texto;
+           // TextBox texto;
 
             //Le lista com arquivos
             if (Arquivos.Count > 0)

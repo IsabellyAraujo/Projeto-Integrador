@@ -17,7 +17,7 @@ namespace Projeto_Integrador.DAL
         {
             connectionString = ConfigurationManager.ConnectionStrings["2016TiiGrupo3ConnectionString"].ConnectionString;
         }
-
+        //Modelo Anotação
         [DataObjectMethod(DataObjectMethodType.Select)]
         public List<Modelo.Anotacao> SelectAll(string user_id)
         {
@@ -52,7 +52,7 @@ namespace Projeto_Integrador.DAL
 
             return aListAnotacao;
         }
-
+        //Listar Anotações
         [DataObjectMethod(DataObjectMethodType.Select)]
         public Modelo.Anotacao SelectOne(string id)
         {
@@ -77,7 +77,7 @@ namespace Projeto_Integrador.DAL
 
             return aAnotacao;
         }
-
+        //favorito
         [DataObjectMethod(DataObjectMethodType.Select)]
         public bool SelectValidarFavorito(int id)
         {

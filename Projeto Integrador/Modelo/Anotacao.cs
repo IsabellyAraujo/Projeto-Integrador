@@ -22,16 +22,7 @@ namespace Projeto_Integrador.Modelo
             this.usuario_id = "";
         }
 
-        /*public Anotacao(string aid, string atitulo, string adescricao, bool afavorito, DateTime ahorarioDeEnvio, string ausuario_id)
-        {
-            this.id = aid;
-            this.titulo = atitulo;
-            this.descricao = adescricao;
-            this.favorito = afavorito;
-            this.horarioDeEnvio = ahorarioDeEnvio;
-            this.usuario_id = ausuario_id;
-        }*/
-
+  
         public Anotacao(string atitulo, string adescricao, bool afavorito, string ausuario_id)
         {
             this.titulo = atitulo;

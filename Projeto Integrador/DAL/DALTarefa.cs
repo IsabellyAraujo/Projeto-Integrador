@@ -17,7 +17,7 @@ namespace Projeto_Integrador.DAL
         {
             connectionString = ConfigurationManager.ConnectionStrings["2016TiiGrupo3ConnectionString"].ConnectionString;
         }
-
+        //Modelo Tarefa
         [DataObjectMethod(DataObjectMethodType.Select)]
         public List<Modelo.Tarefa> SelectAll(string user_id)
         {
@@ -27,9 +27,12 @@ namespace Projeto_Integrador.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand("sp_listarTodasTarefasUsuario", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
+            SqlCommand cmd = new SqlCommand("Select id, descricao, cumprida, prioritaria, horarioDeEnvio, usuario_id from Tarefa where usuario_id = @usuario_id order by prioritaria desc", conn);
             cmd.Parameters.AddWithValue("@usuario_id", user_id);
+
+           /* SqlCommand cmd = new SqlCommand("sp_listarTodasTarefasUsuario", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@usuario_id", user_id);*/
 
             SqlDataReader dr = cmd.ExecuteReader();
 
@@ -37,7 +40,14 @@ namespace Projeto_Integrador.DAL
             {
                 while (dr.Read())
                 {
-                    aTarefa = new Modelo.Tarefa(
+                   Convert.ToInt32(dr["id"]),
+                        dr["descricao"].ToString(),
+                        Convert.ToBoolean(dr["cumprida"]),
+                        Convert.ToBoolean(dr["prioritaria"]),
+                        Convert.ToDateTime(dr["horarioDeEnvio"]),
+                        dr["usuario_id"].ToString());                    
+                    aListTarefa.Add(aTarefa);
+                    /* aTarefa = new Modelo.Tarefa(
                         dr.GetString(0),
                         dr.GetString(1),
                         dr.GetBoolean(2),
@@ -45,7 +55,7 @@ namespace Projeto_Integrador.DAL
                         dr.GetDateTime(4),
                         dr.GetString(5)
                         );
-                    aListTarefa.Add(aTarefa);
+                    aListTarefa.Add(aTarefa);*/
                 }
             }
 
@@ -54,7 +64,7 @@ namespace Projeto_Integrador.DAL
 
             return aListTarefa;
         }
-
+        //Listar Tarefas
         [DataObjectMethod(DataObjectMethodType.Select)]
         public Modelo.Tarefa SelectOne(string id)
         {
@@ -72,8 +82,8 @@ namespace Projeto_Integrador.DAL
                         dr.GetString(1),
                         dr.GetBoolean(2),
                         dr.GetBoolean(3),
-                        dr.GetDateTime(4),
-                        dr.GetString(5)
+                        //dr.GetDateTime(4),
+                        dr.GetString(4)
                         );
 
             dr.Close();
@@ -81,7 +91,7 @@ namespace Projeto_Integrador.DAL
 
             return aTarefa;
         }
-
+        //Deletar
         [DataObjectMethod(DataObjectMethodType.Delete)]
         public void Delete(Modelo.Tarefa obj)
         {

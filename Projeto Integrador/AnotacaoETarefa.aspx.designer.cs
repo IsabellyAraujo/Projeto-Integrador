@@ -13,31 +13,31 @@ namespace Projeto_Integrador {
     public partial class AnotacoesETarefa {
         
         /// <summary>
-        /// Button1 control.
+        /// ButtonCriarTarefas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button ButtonCriarTarefas;
         
         /// <summary>
-        /// TextBox1 control.
+        /// TextBoxTarefaDescricao control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxTarefaDescricao;
         
         /// <summary>
-        /// BotaoSalvar1 control.
+        /// ButtonSalvarTarefas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BotaoSalvar1;
+        protected global::System.Web.UI.WebControls.Button ButtonSalvarTarefas;
         
         /// <summary>
         /// ButtonAnotacoes control.
