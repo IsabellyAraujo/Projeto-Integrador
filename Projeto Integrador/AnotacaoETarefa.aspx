@@ -22,8 +22,7 @@
                     <asp:Label ID="LabelTarefasId" runat="server" OnPreRender="LabelTarefasId_PreRender" Text='<%# Eval("id") %>'></asp:Label>
                         <asp:Label ID="descricaoLabel" runat="server" Text='<%# Eval("descricao") %>' />
                     <br />
-                    <br />
-             
+                    <asp:LinkButton ID="LinkButtonExcluirTarefas" runat="server" OnClick="LinkButtonExcluirTarefas_Click" OnPreRender="LinkButtonExcluirTarefas_PreRender">EXCLUIR</asp:LinkButton>
                 </ItemTemplate>
             </asp:DataList>
             <asp:ObjectDataSource ID="ObjectDataSourceTarefa" runat="server" SelectMethod="SelectAll" TypeName="Projeto_Integrador.DAL.DALTarefa">

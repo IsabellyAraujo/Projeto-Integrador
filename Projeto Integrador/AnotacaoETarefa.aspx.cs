@@ -90,13 +90,7 @@ namespace Projeto_Integrador
 
         protected void LinkButtonEditarAnotacoes_Click(object sender, EventArgs e)
         {
-            //foreach (DataListItem teste in DataList1.Controls) 
-            //{
-            //    if (teste.ID == "LabelTituloAnotacoesEditar" || teste.ID == "LabelDescricaoAnotacoesEditar")
-            //        teste.Visible = true;
-            //}
-            //TextBoxAnotacoesDescricaoEditar.Visible = true;
-            //TextBoxAnotacoesTitulooEditar.Visible = true;
+            
         }
 
         //TAREFA
@@ -106,6 +100,7 @@ namespace Projeto_Integrador
             TextBoxTarefaDescricao.Visible = true;
             ButtonSalvarTarefas.Visible = true;
         }
+                    //Salvar tarefas
         protected void ButtonSalvarTarefa_Click(object sender, EventArgs e)
         {
             DAL.DALTarefa DALTarefa = new DAL.DALTarefa();
@@ -114,12 +109,26 @@ namespace Projeto_Integrador
             Response.Redirect("~/AnotacaoETarefa.aspx");
             TextBoxTarefaDescricao.Visible = false;
         }
+                // atualiza id tarefas
         protected void LabelTarefasId_PreRender(object sender, EventArgs e)
         {
             tarefa_id = int.Parse((sender as Label).Text);
             (sender as Label).Visible = false;
             DAL.DALAnotacao DALAnotacao = new DAL.DALAnotacao();
             visibilidade = DALAnotacao.SelectValidarFavorito(int.Parse((sender as Label).Text));
+        }
+        //atualiza exclui tarefas
+        protected void LinkButtonExcluirTarefas_PreRender(object sender, EventArgs e)
+        {
+            (sender as LinkButton).CommandName = tarefa_id.ToString();
+        }
+            //exclui tarefas
+        protected void LinkButtonExcluirTarefas_Click(object sender, EventArgs e)
+        {
+            DAL.DALTarefa DALTarefa = new DAL.DALTarefa();
+            Modelo.Tarefa tarefa = new Modelo.Tarefa(int.Parse((sender as LinkButton).CommandName));
+            DALTarefa.Delete(tarefa);
+            Response.Redirect("~/AnotacaoETarefa.aspx");
         }
       
     }

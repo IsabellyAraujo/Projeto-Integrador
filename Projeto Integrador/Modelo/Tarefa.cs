@@ -40,5 +40,9 @@ namespace Projeto_Integrador.Modelo
             this.prioritaria = aprioritaria;
             this.usuario_id = ausuario_id;
         }
+        public Tarefa(int aid)
+        {
+            this.id = aid;
+        }
     }
 }
