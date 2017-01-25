@@ -40,12 +40,13 @@ namespace Projeto_Integrador.DAL
             {
                 while (dr.Read())
                 {
-                   Convert.ToInt32(dr["id"]),
-                        dr["descricao"].ToString(),
-                        Convert.ToBoolean(dr["cumprida"]),
-                        Convert.ToBoolean(dr["prioritaria"]),
-                        Convert.ToDateTime(dr["horarioDeEnvio"]),
-                        dr["usuario_id"].ToString());                    
+                        aTarefa = new Modelo.Tarefa(
+                            Convert.ToInt32(dr["id"]),
+                            dr["descricao"].ToString(),
+                            Convert.ToBoolean(dr["cumprida"]),
+                            Convert.ToBoolean(dr["prioritaria"]),
+                            Convert.ToDateTime(dr["horarioDeEnvio"]),
+                            dr["usuario_id"].ToString());                    
                     aListTarefa.Add(aTarefa);
                     /* aTarefa = new Modelo.Tarefa(
                         dr.GetString(0),
@@ -65,32 +66,32 @@ namespace Projeto_Integrador.DAL
             return aListTarefa;
         }
         //Listar Tarefas
-        [DataObjectMethod(DataObjectMethodType.Select)]
-        public Modelo.Tarefa SelectOne(string id)
-        {
-            SqlConnection conn = new SqlConnection(connectionString);
-            conn.Open();
+        //[DataObjectMethod(DataObjectMethodType.Select)]
+        //public Modelo.Tarefa SelectOne(string id)
+        //{
+        //    SqlConnection conn = new SqlConnection(connectionString);
+        //    conn.Open();
 
-            SqlCommand cmd = new SqlCommand("sp_listarUmaTarefa", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@id", id);
+        //    SqlCommand cmd = new SqlCommand("sp_listarUmaTarefa", conn);
+        //    cmd.CommandType = CommandType.StoredProcedure;
+        //    cmd.Parameters.AddWithValue("@id", id);
 
-            SqlDataReader dr = cmd.ExecuteReader();
+        //    SqlDataReader dr = cmd.ExecuteReader();
 
-            Modelo.Tarefa aTarefa = new Modelo.Tarefa(
-                        dr.GetString(0),
-                        dr.GetString(1),
-                        dr.GetBoolean(2),
-                        dr.GetBoolean(3),
-                        //dr.GetDateTime(4),
-                        dr.GetString(4)
-                        );
+        //    Modelo.Tarefa aTarefa = new Modelo.Tarefa(
+        //                dr.GetInt(0),
+        //                dr.GetString(1),
+        //                dr.GetBoolean(2),
+        //                dr.GetBoolean(3),
+        //        //dr.GetDateTime(4),
+        //                dr.GetString(4)
+        //                );
 
-            dr.Close();
-            conn.Close();
+        //    dr.Close();
+        //    conn.Close();
 
-            return aTarefa;
-        }
+        //    return aTarefa;
+        //}
         //Deletar
         [DataObjectMethod(DataObjectMethodType.Delete)]
         public void Delete(Modelo.Tarefa obj)

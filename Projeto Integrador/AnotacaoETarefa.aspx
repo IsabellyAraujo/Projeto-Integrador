@@ -11,10 +11,15 @@
             <div class="botaocriaranotacao col-sm-12 col-md-12">
              <asp:Button ID="ButtonCriarTarefas" runat="server" Text="CRIAR" class="btn btn-submitcriar" OnClick="ButtonTarefas_Click" />
              </div>
-        <div id="divum" style="display: none; padding-top: 2%;">
-             <asp:TextBox ID="TextBoxTarefaDescricao" runat="server" placeholder="Digite sua tarefa" Visible="False" Width="100%" TextMode="MultiLine"></asp:TextBox>
+            <div class="texto col-md-12 col-sm-12">
+                <asp:Label ID="LabelTarefaDescricao" runat="server" Text="Descrição" Visible="False"></asp:Label>
+                <asp:TextBox ID="TextBoxTarefaDescricao" runat="server" Visible="False"></asp:TextBox>
+                    <br />
+            </div>
+        <!-- <div id="divum" style="display: none; padding-top: 2%;">
+             
              <asp:Button ID="ButtonSalvarTarefas" runat="server" class="btn btn-submitsalvar" Text="Salvar" Visible="False" OnClick="ButtonSalvarTarefas_Click" />
-        </div>
+        </div> -->
         </div>
         <div class="portfolio-pagination">
             <ul class="pagination">
