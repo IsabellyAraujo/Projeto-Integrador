@@ -39,8 +39,6 @@ namespace Projeto_Integrador {
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxTarefaDescricao;
         
-     
-        
         /// <summary>
         /// ButtonSalvarTarefas control.
         /// </summary>
@@ -49,6 +47,24 @@ namespace Projeto_Integrador {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonSalvarTarefas;
+        
+        /// <summary>
+        /// DataListTarefa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList DataListTarefa;
+        
+        /// <summary>
+        /// ObjectDataSourceTarefa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSourceTarefa;
         
         /// <summary>
         /// ButtonAnotacoes control.
@@ -105,21 +121,21 @@ namespace Projeto_Integrador {
         protected global::System.Web.UI.WebControls.Button ButtonSalvarAnotacoes;
         
         /// <summary>
-        /// DataList1 control.
+        /// DataListAnotacao control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList DataList1;
+        protected global::System.Web.UI.WebControls.DataList DataListAnotacao;
         
         /// <summary>
-        /// ObjectDataSource1 control.
+        /// ObjectDataSourceAnotacao control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
+        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSourceAnotacao;
     }
 }

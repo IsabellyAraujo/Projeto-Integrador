@@ -10,6 +10,7 @@ namespace Projeto_Integrador
     public partial class AnotacoesETarefa : System.Web.UI.Page
     {
         int anotacao_id;
+        int tarefa_id;
         bool visibilidade;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,7 +25,7 @@ namespace Projeto_Integrador
             TextBoxAnotacoesDescricao.Visible = true;
             ButtonSalvarAnotacoes.Visible = true;
         }
-
+            //salva anotação
         protected void ButtonSalvarAnotacoes_Click(object sender, EventArgs e)
         {
             DAL.DALAnotacao DALAnotacao = new DAL.DALAnotacao();
@@ -38,7 +39,7 @@ namespace Projeto_Integrador
             TextBoxAnotacoesTitulo.Visible = false;
             TextBoxAnotacoesDescricao.Visible = false;
         }
-
+            // atualiza a anotação
         protected void LabelAnotacoesId_PreRender(object sender, EventArgs e)
         {
             anotacao_id = int.Parse((sender as Label).Text);
@@ -46,12 +47,12 @@ namespace Projeto_Integrador
             DAL.DALAnotacao DALAnotacao = new DAL.DALAnotacao();
             visibilidade = DALAnotacao.SelectValidarFavorito(int.Parse((sender as Label).Text));
         }
-
+                //edita anotação
         protected void LinkButtonEditarAnotacoes_PreRender(object sender, EventArgs e)
         {
             (sender as LinkButton).CommandName = anotacao_id.ToString();
         }
-
+                //atualiza exclui anotação  
         protected void LinkButtonExcluirAnotacoes_PreRender(object sender, EventArgs e)
         {
             (sender as LinkButton).CommandName = anotacao_id.ToString();
@@ -66,7 +67,7 @@ namespace Projeto_Integrador
         {
             (sender as Image).Visible = visibilidade;
         }
-
+                //favorita anotação
         protected void ImageButtonFavoritarAnotacoes_Click(object sender, ImageClickEventArgs e)
         {
             DAL.DALAnotacao DALAnotacao = new DAL.DALAnotacao();
@@ -78,7 +79,7 @@ namespace Projeto_Integrador
             else DALAnotacao.UpdateFavorito(0, int.Parse((sender as ImageButton).CommandName));
             Response.Redirect("~/AnotacaoETarefa.aspx");
         }
-
+                //exclui anotação
         protected void LinkButtonExcluirAnotacoes_Click(object sender, EventArgs e)
         {
             DAL.DALAnotacao DALAnotacao = new DAL.DALAnotacao();
@@ -97,22 +98,29 @@ namespace Projeto_Integrador
             //TextBoxAnotacoesDescricaoEditar.Visible = true;
             //TextBoxAnotacoesTitulooEditar.Visible = true;
         }
+
         //TAREFA
         protected void ButtonTarefas_Click(object sender, EventArgs e)
         {
+            LabelTarefaDescricao.Visible = true;
             TextBoxTarefaDescricao.Visible = true;
             ButtonSalvarTarefas.Visible = true;
         }
-        protected void ButtonSalvarTarefas_Click(object sender, EventArgs e)
+        protected void ButtonSalvarTarefa_Click(object sender, EventArgs e)
         {
             DAL.DALTarefa DALTarefa = new DAL.DALTarefa();
             Modelo.Tarefa tarefa = new Modelo.Tarefa(TextBoxTarefaDescricao.Text, false, false, Session["userID"].ToString());
             DALTarefa.Insert(tarefa);
-
             Response.Redirect("~/AnotacaoETarefa.aspx");
-
-
             TextBoxTarefaDescricao.Visible = false;
         }
+        protected void LabelTarefasId_PreRender(object sender, EventArgs e)
+        {
+            tarefa_id = int.Parse((sender as Label).Text);
+            (sender as Label).Visible = false;
+            DAL.DALAnotacao DALAnotacao = new DAL.DALAnotacao();
+            visibilidade = DALAnotacao.SelectValidarFavorito(int.Parse((sender as Label).Text));
+        }
+      
     }
 }
