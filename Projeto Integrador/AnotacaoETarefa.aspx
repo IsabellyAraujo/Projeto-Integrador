@@ -22,6 +22,7 @@
                     <asp:Label ID="LabelTarefasId" runat="server" OnPreRender="LabelTarefasId_PreRender" Text='<%# Eval("id") %>'></asp:Label>
                         <asp:Label ID="descricaoLabel" runat="server" Text='<%# Eval("descricao") %>' />
                     <br />
+<%--                    <asp:LinkButton ID="LinkButtonEditarTarefas" runat="server" OnPreRender="LinkButtonEditarTarefas_PreRender" OnClick="LinkButtonEditarTarefas_Click">EDITAR</asp:LinkButton>--%>
                     <asp:LinkButton ID="LinkButtonExcluirTarefas" runat="server" OnClick="LinkButtonExcluirTarefas_Click" OnPreRender="LinkButtonExcluirTarefas_PreRender">EXCLUIR</asp:LinkButton>
                 </ItemTemplate>
             </asp:DataList>

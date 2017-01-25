@@ -53,30 +53,39 @@ namespace Projeto_Integrador.DAL
             return aListAnotacao;
         }
         //Listar Anotações
+        
+
+
         [DataObjectMethod(DataObjectMethodType.Select)]
         public Modelo.Anotacao SelectOne(string id)
         {
+            Modelo.Anotacao aAnotacao = new Modelo.Anotacao();
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand("sp_listarUmaAnotacao", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
+            SqlCommand cmd = new SqlCommand("Select id, titulo, descricao from Anotacao where id = @id", conn);
+            //cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@id", id);
 
             SqlDataReader dr = cmd.ExecuteReader();
 
-            Modelo.Anotacao aAnotacao = new Modelo.Anotacao(
-                        dr.GetString(0),
-                        dr.GetString(1),
-                        dr.GetBoolean(2),
-                        dr.GetString(3)
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    aAnotacao = new Modelo.Anotacao(
+                        Convert.ToInt32(dr["id"]),
+                        dr["titulo"].ToString(),
+                        dr["descricao"].ToString()
                         );
+                }
+            }
 
             dr.Close();
             conn.Close();
-
             return aAnotacao;
         }
+
         //favorito
         [DataObjectMethod(DataObjectMethodType.Select)]
         public bool SelectValidarFavorito(int id)
@@ -131,22 +140,23 @@ namespace Projeto_Integrador.DAL
 
             cmd.ExecuteNonQuery();
         }
-
         [DataObjectMethod(DataObjectMethodType.Update)]
         public void Update(Modelo.Anotacao obj)
         {
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand("sp_editarAnotacao", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
+            //SqlCommand cmd = new SqlCommand("sp_editarAnotacao", conn);
+            //cmd.CommandType = CommandType.StoredProcedure;
+            SqlCommand cmd = new SqlCommand("Update Anotacao set titulo = @titulo and descricao = @descricao and horarioDeEnvio = @horarioDeEnvio where id = @id", conn);
             cmd.Parameters.AddWithValue("@id", obj.id);
             cmd.Parameters.AddWithValue("@titulo", obj.titulo);
             cmd.Parameters.AddWithValue("@descricao", obj.descricao);
-            cmd.Parameters.AddWithValue("@favorito", obj.favorito);
 
             cmd.ExecuteNonQuery();
         }
+
+
 
         [DataObjectMethod(DataObjectMethodType.Update)]
         public void UpdateFavorito(int favorito, int id)

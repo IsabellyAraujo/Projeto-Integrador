@@ -11,6 +11,7 @@ namespace Projeto_Integrador
     {
         int anotacao_id;
         int tarefa_id;
+        string anotacao_idString;
         bool visibilidade;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -90,9 +91,32 @@ namespace Projeto_Integrador
 
         protected void LinkButtonEditarAnotacoes_Click(object sender, EventArgs e)
         {
-            
-        }
+            LabelAnotacoesDescricao.Visible = true;
+            LabelAnotacoesTitulo.Visible = true;
+            TextBoxAnotacoesTitulo.Visible = true;
+            TextBoxAnotacoesDescricao.Visible = true;
+            ButtonSalvarAnotacoes.Visible = true;
 
+
+            DAL.DALAnotacao DALAnotacao = new DAL.DALAnotacao();
+            TextBoxAnotacoesTitulo.Text = DALAnotacao.SelectOne((sender as LinkButton).CommandName).titulo.ToString();
+            TextBoxAnotacoesDescricao.Text = DALAnotacao.SelectOne((sender as LinkButton).CommandName).descricao.ToString();
+            anotacao_idString = DALAnotacao.SelectOne((sender as LinkButton).CommandName).id.ToString();
+        }
+            //editar anotações
+        protected void ButtonEditarAnotacoes_Click(object sender, EventArgs e)
+        {
+            string tituloAnotacao = TextBoxAnotacoesTitulo.Text;
+            string descricaoAnotacao = TextBoxAnotacoesDescricao.Text;
+            DateTime horarioDeEnvio = DateTime.Now;
+            Modelo.Anotacao anotacao = new Modelo.Anotacao(int.Parse((sender as LinkButton).CommandName), TextBoxAnotacoesTitulo.Text, TextBoxAnotacoesDescricao.Text, horarioDeEnvio);
+            DAL.DALAnotacao DALAnotacao = new DAL.DALAnotacao();
+            DALAnotacao.Update(anotacao);
+        }
+        protected void ButtonEditarAnotacoes_PreRender(object sender, EventArgs e)
+        {
+            (sender as LinkButton).CommandName = anotacao_idString;
+        }
         //TAREFA
         protected void ButtonTarefas_Click(object sender, EventArgs e)
         {
@@ -130,6 +154,18 @@ namespace Projeto_Integrador
             DALTarefa.Delete(tarefa);
             Response.Redirect("~/AnotacaoETarefa.aspx");
         }
+            //editar tarefas
+        //protected void ButtonEditarTarefas_Click(object sender, EventArgs e)
+        //{
+        //    string descricaoTarefa = TextBoxTarefaDescricao.Text;
+   
+        //    DateTime horarioDeEnvio = DateTime.Now;
+        //    Modelo.Anotacao anotacao = new Modelo.Anotacao(int.Parse((sender as LinkButton).CommandName), TextBoxAnotacoesTitulo.Text, TextBoxAnotacoesDescricao.Text, horarioDeEnvio);
+        //    DAL.DALAnotacao DALAnotacao = new DAL.DALAnotacao();
+        //    DALAnotacao.Update(anotacao);
+        //}
+
+
       
     }
 }

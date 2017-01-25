@@ -11,6 +11,7 @@ namespace Projeto_Integrador.Modelo
         public string titulo { get; set; }
         public string descricao { get; set; }
         public bool favorito { get; set; }
+        public DateTime horarioDeEnvio { get; set; }
         public string usuario_id { get; set; }
 
         public Anotacao()
@@ -21,7 +22,27 @@ namespace Projeto_Integrador.Modelo
             this.favorito = false;
             this.usuario_id = "";
         }
-
+        //public Anotacao(int aid, string atitulo, string adescricao, bool afavorito, DateTime ahorarioDeEnvio, string ausuario_id)
+        //{
+        //    this.id = aid;
+        //    this.titulo = atitulo;
+        //    this.descricao = adescricao;
+        //    this.favorito = afavorito;
+        //    this.horarioDeEnvio = ahorarioDeEnvio;
+        //}
+        public Anotacao(int aid, string atitulo, string adescricao, DateTime ahorarioDeEnvio)
+        {
+            this.id = aid;
+            this.titulo = atitulo;
+            this.descricao = adescricao;
+            this.horarioDeEnvio = ahorarioDeEnvio;
+        }
+        public Anotacao(int aid, string atitulo, string adescricao)
+        {
+            this.id = aid;
+            this.titulo = atitulo;
+            this.descricao = adescricao;
+        }
   
         public Anotacao(string atitulo, string adescricao, bool afavorito, string ausuario_id)
         {
