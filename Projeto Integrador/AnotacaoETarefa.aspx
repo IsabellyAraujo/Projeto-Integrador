@@ -23,11 +23,17 @@
                     <asp:Label ID="LabelTarefasId" runat="server" OnPreRender="LabelTarefasId_PreRender" Text='<%# Eval("id") %>'></asp:Label>
                         <asp:Label ID="descricaoLabel" runat="server" Text='<%# Eval("descricao") %>' />
                     <br />
-                    <asp:LinkButton ID="LinkButtonEditarTarefas" runat="server" OnPreRender="LinkButtonEditarTarefas_PreRender" OnClick="LinkButtonEditarTarefas_Click">EDITAR</asp:LinkButton>
-                    <asp:LinkButton ID="LinkButtonExcluirTarefas" runat="server" OnClick="LinkButtonExcluirTarefas_Click" OnPreRender="LinkButtonExcluirTarefas_PreRender">EXCLUIR</asp:LinkButton>
+                    
                     <%-- editar --%>
                     <asp:Label ID="LabelTarefasDescricaoEditar" runat="server" Text="Descrição" Visible="False"></asp:Label>
                     <asp:TextBox ID="TextBoxTarefasDescricaoEditar" runat="server" Height="21px" TextMode="MultiLine" Visible="False" Width="158px"></asp:TextBox>
+                     <asp:Image ID="ImagePrioridade" runat="server" ImageUrl="~/Imagens/fav.png" Width="30" Height="30" OnPreRender="ImagePrioridade_PreRender" />
+                    <%-- config --%>
+                     <div class="configtexto col-md-12 col-sm-12">
+                         <asp:ImageButton ID="ImageButtonFavoritarAnotacoes" runat="server" ImageUrl="~/Imagens/fav.png" OnClick="ImageButtonPriorizarTarefa_Click" OnPreRender="ImageButtonPriorizarTarefa_PreRender" Width="30px" />
+                         <asp:LinkButton ID="LinkButtonEditarTarefas" runat="server" OnPreRender="LinkButtonEditarTarefas_PreRender" OnClick="LinkButtonEditarTarefas_Click">EDITAR</asp:LinkButton>
+                         <asp:LinkButton ID="LinkButtonExcluirTarefas" runat="server" OnClick="LinkButtonExcluirTarefas_Click" OnPreRender="LinkButtonExcluirTarefas_PreRender">EXCLUIR</asp:LinkButton>
+                     </div>
                 </ItemTemplate>
             </asp:DataList>
             <asp:ObjectDataSource ID="ObjectDataSourceTarefa" runat="server" SelectMethod="SelectAll" TypeName="Projeto_Integrador.DAL.DALTarefa">

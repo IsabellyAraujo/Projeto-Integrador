@@ -144,5 +144,42 @@ namespace Projeto_Integrador.DAL
           //  cmd.Parameters.AddWithValue("@horarioDeEnvio", obj.horarioDeEnvio);
             cmd.ExecuteNonQuery();
         }
+        //favorito
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public bool SelectValidarPrioridade(int id)
+        {
+            bool validar = true;
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+            SqlCommand com = conn.CreateCommand();
+            SqlCommand cmd = new SqlCommand("Select prioritaria FROM Tarefa where id = @id", conn);
+            cmd.Parameters.AddWithValue("@id", id);
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    if (Convert.ToInt32(dr["prioritaria"]) == 0)
+                    {
+                        validar = false;
+                    }
+                }
+            }
+            dr.Close();
+            conn.Close();
+            return validar;
+        }
+        [DataObjectMethod(DataObjectMethodType.Update)]
+        public void UpdatePrioridade(int prioritaria, int id)
+        {
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("Update Tarefa set prioritaria = @prioritaria where id = @id", conn);
+            cmd.Parameters.AddWithValue("@prioritaria", prioritaria);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            cmd.ExecuteNonQuery();
+        }
     }
 }

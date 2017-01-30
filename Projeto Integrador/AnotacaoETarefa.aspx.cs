@@ -138,8 +138,8 @@ namespace Projeto_Integrador
         {
             tarefa_id = int.Parse((sender as Label).Text);
             (sender as Label).Visible = false;
-            DAL.DALAnotacao DALAnotacao = new DAL.DALAnotacao();
-            visibilidade = DALAnotacao.SelectValidarFavorito(int.Parse((sender as Label).Text));
+            DAL.DALTarefa DALTarefa = new DAL.DALTarefa();
+            visibilidade = DALTarefa.SelectValidarPrioridade(int.Parse((sender as Label).Text));
         }
         //atualiza exclui tarefas
         protected void LinkButtonExcluirTarefas_PreRender(object sender, EventArgs e)
@@ -182,7 +182,25 @@ namespace Projeto_Integrador
         {
             (sender as LinkButton).CommandName = tarefa_id.ToString();
         }
-
-      
+        //PRIORIDADE
+        protected void ImageButtonPriorizarTarefa_Click(object sender, ImageClickEventArgs e)
+        {
+            DAL.DALTarefa DALTarefa = new DAL.DALTarefa();
+            bool validar = DALTarefa.SelectValidarPrioridade(int.Parse((sender as ImageButton).CommandName));
+            if (validar == false)
+            {
+                DALTarefa.UpdatePrioridade(1, int.Parse((sender as ImageButton).CommandName));
+            }
+            else DALTarefa.UpdatePrioridade(0, int.Parse((sender as ImageButton).CommandName));
+            Response.Redirect("~/AnotacaoETarefa.aspx");
+        }
+        protected void ImageButtonPriorizarTarefa_PreRender(object sender, EventArgs e)
+        {
+            (sender as ImageButton).CommandName = tarefa_id.ToString();
+        }
+        protected void ImagePrioridade_PreRender(object sender, EventArgs e)
+        {
+            (sender as Image).Visible = visibilidade;
+        }
     }
 }
