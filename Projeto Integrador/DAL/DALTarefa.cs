@@ -17,7 +17,7 @@ namespace Projeto_Integrador.DAL
         {
             connectionString = ConfigurationManager.ConnectionStrings["2016TiiGrupo3ConnectionString"].ConnectionString;
         }
-        //Modelo Tarefa
+        //Modelo Tarefa LISTAR SELECT ALL
         [DataObjectMethod(DataObjectMethodType.Select)]
         public List<Modelo.Tarefa> SelectAll(string user_id)
         {
@@ -29,11 +29,6 @@ namespace Projeto_Integrador.DAL
 
             SqlCommand cmd = new SqlCommand("Select id, descricao, cumprida, prioritaria, horarioDeEnvio, usuario_id from Tarefa where usuario_id = @usuario_id order by prioritaria desc", conn);
             cmd.Parameters.AddWithValue("@usuario_id", user_id);
-
-           /* SqlCommand cmd = new SqlCommand("sp_listarTodasTarefasUsuario", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@usuario_id", user_id);*/
-
             SqlDataReader dr = cmd.ExecuteReader();
 
             if (dr.HasRows)
@@ -65,33 +60,33 @@ namespace Projeto_Integrador.DAL
 
             return aListTarefa;
         }
-        //Listar Tarefas
-        //[DataObjectMethod(DataObjectMethodType.Select)]
-        //public Modelo.Tarefa SelectOne(string id)
-        //{
-        //    SqlConnection conn = new SqlConnection(connectionString);
-        //    conn.Open();
+        //Listar Tarefas Select ONE
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public Modelo.Tarefa SelectOne(string id)
+        {
+            Modelo.Tarefa aTarefa = new Modelo.Tarefa();
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
 
-        //    SqlCommand cmd = new SqlCommand("sp_listarUmaTarefa", conn);
-        //    cmd.CommandType = CommandType.StoredProcedure;
-        //    cmd.Parameters.AddWithValue("@id", id);
+            SqlCommand cmd = new SqlCommand("Select id, descricao from Tarefa where id = @id", conn);
+            cmd.Parameters.AddWithValue("@id", id);
 
-        //    SqlDataReader dr = cmd.ExecuteReader();
+            SqlDataReader dr = cmd.ExecuteReader();
 
-        //    Modelo.Tarefa aTarefa = new Modelo.Tarefa(
-        //                dr.GetInt(0),
-        //                dr.GetString(1),
-        //                dr.GetBoolean(2),
-        //                dr.GetBoolean(3),
-        //        //dr.GetDateTime(4),
-        //                dr.GetString(4)
-        //                );
+           if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                        aTarefa = new Modelo.Tarefa(
+                            Convert.ToInt32(dr["id"]),
+                            (dr["descricao"].ToString()));
+                }
+            }
 
-        //    dr.Close();
-        //    conn.Close();
-
-        //    return aTarefa;
-        //}
+           dr.Close();
+           conn.Close();
+           return aTarefa;
+        }
         //Deletar
         [DataObjectMethod(DataObjectMethodType.Delete)]
         public void Delete(Modelo.Tarefa obj)
@@ -122,19 +117,31 @@ namespace Projeto_Integrador.DAL
             cmd.ExecuteNonQuery();
         }
 
+        //[DataObjectMethod(DataObjectMethodType.Update)]
+        //public void Update(Modelo.Tarefa obj)
+        //{
+        //    SqlConnection conn = new SqlConnection(connectionString);
+        //    conn.Open();
+
+        //    SqlCommand cmd = new SqlCommand("sp_editarTarefa", conn);
+        //    cmd.CommandType = CommandType.StoredProcedure;
+        //    cmd.Parameters.AddWithValue("@id", obj.id);
+        //    cmd.Parameters.AddWithValue("@descricao", obj.descricao);
+        //    cmd.Parameters.AddWithValue("@cumprida", obj.cumprida);
+        //    cmd.Parameters.AddWithValue("@prioritaria", obj.prioritaria);
+
+        //    cmd.ExecuteNonQuery();
+        //}
         [DataObjectMethod(DataObjectMethodType.Update)]
         public void Update(Modelo.Tarefa obj)
         {
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand("sp_editarTarefa", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
+            SqlCommand cmd = new SqlCommand("Update Tarefa set descricao = @descricao where id = @id", conn);
             cmd.Parameters.AddWithValue("@id", obj.id);
             cmd.Parameters.AddWithValue("@descricao", obj.descricao);
-            cmd.Parameters.AddWithValue("@cumprida", obj.cumprida);
-            cmd.Parameters.AddWithValue("@prioritaria", obj.prioritaria);
-
+          //  cmd.Parameters.AddWithValue("@horarioDeEnvio", obj.horarioDeEnvio);
             cmd.ExecuteNonQuery();
         }
     }

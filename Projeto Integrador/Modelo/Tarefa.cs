@@ -20,7 +20,7 @@ namespace Projeto_Integrador.Modelo
             this.descricao = "";
             this.cumprida = false;
             this.prioritaria = false;
-            this.horarioDeEnvio = DateTime.MinValue;
+            this.horarioDeEnvio = DateTime.Now;
             this.usuario_id = "";
         }
 
@@ -43,6 +43,12 @@ namespace Projeto_Integrador.Modelo
         public Tarefa(int aid)
         {
             this.id = aid;
+        }
+        public Tarefa(int aid, string adescricao)//, DateTime ahorarioDeEnvio)
+        {
+            this.id = aid;
+            this.descricao = adescricao;
+          //  this.horarioDeEnvio = ahorarioDeEnvio;
         }
     }
 }

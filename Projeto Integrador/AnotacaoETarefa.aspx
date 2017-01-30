@@ -19,11 +19,15 @@
             </div>
             <asp:DataList ID="DataListTarefa" runat="server" DataSourceID="ObjectDataSourceTarefa">
                 <ItemTemplate>
+                    <%-- inserir --%>
                     <asp:Label ID="LabelTarefasId" runat="server" OnPreRender="LabelTarefasId_PreRender" Text='<%# Eval("id") %>'></asp:Label>
                         <asp:Label ID="descricaoLabel" runat="server" Text='<%# Eval("descricao") %>' />
                     <br />
-<%--                    <asp:LinkButton ID="LinkButtonEditarTarefas" runat="server" OnPreRender="LinkButtonEditarTarefas_PreRender" OnClick="LinkButtonEditarTarefas_Click">EDITAR</asp:LinkButton>--%>
+                    <asp:LinkButton ID="LinkButtonEditarTarefas" runat="server" OnPreRender="LinkButtonEditarTarefas_PreRender" OnClick="LinkButtonEditarTarefas_Click">EDITAR</asp:LinkButton>
                     <asp:LinkButton ID="LinkButtonExcluirTarefas" runat="server" OnClick="LinkButtonExcluirTarefas_Click" OnPreRender="LinkButtonExcluirTarefas_PreRender">EXCLUIR</asp:LinkButton>
+                    <%-- editar --%>
+                    <asp:Label ID="LabelTarefasDescricaoEditar" runat="server" Text="Descrição" Visible="False"></asp:Label>
+                    <asp:TextBox ID="TextBoxTarefasDescricaoEditar" runat="server" Height="21px" TextMode="MultiLine" Visible="False" Width="158px"></asp:TextBox>
                 </ItemTemplate>
             </asp:DataList>
             <asp:ObjectDataSource ID="ObjectDataSourceTarefa" runat="server" SelectMethod="SelectAll" TypeName="Projeto_Integrador.DAL.DALTarefa">
@@ -53,11 +57,13 @@
                <!--Exibição de dados-->
                  <asp:DataList ID="DataListAnotacao" runat="server" DataSourceID="ObjectDataSourceAnotacao">
                 <ItemTemplate>
+                    <%-- inserir --%>
                     <asp:Label ID="LabelAnotacoesId" runat="server" OnPreRender="LabelAnotacoesId_PreRender" Text='<%# Eval("id") %>'></asp:Label>
                     <asp:Label ID="tituloLabel" runat="server" Text='<%# Eval("titulo") %>' Font-Bold="True" />
                     <br />
                     <asp:Label ID="descricaoLabel" runat="server" Text='<%# Eval("descricao") %>' />
                     <br />
+                    <%-- editar --%>
                     <asp:Label ID="LabelTituloAnotacoesEditar" runat="server" Text="Titulo" Visible="False"></asp:Label>
                     &nbsp;<asp:TextBox ID="TextBoxAnotacoesTituloEditar" runat="server" Visible="False"></asp:TextBox>
                     <br />

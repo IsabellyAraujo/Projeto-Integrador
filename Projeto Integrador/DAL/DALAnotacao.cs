@@ -64,7 +64,6 @@ namespace Projeto_Integrador.DAL
             conn.Open();
 
             SqlCommand cmd = new SqlCommand("Select id, titulo, descricao from Anotacao where id = @id", conn);
-            //cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@id", id);
 
             SqlDataReader dr = cmd.ExecuteReader();
