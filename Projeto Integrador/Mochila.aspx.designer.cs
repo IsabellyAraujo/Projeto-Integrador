@@ -13,6 +13,15 @@ namespace Projeto_Integrador {
     public partial class Mochila {
         
         /// <summary>
+        /// FileUploadMochila control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUploadMochila;
+        
+        /// <summary>
         /// ButtonEnviarArquivo control.
         /// </summary>
         /// <remarks>

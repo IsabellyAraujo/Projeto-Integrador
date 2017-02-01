@@ -6,8 +6,8 @@
      <div class="col-sm-12 col-md-10 col-md-offset-1" class="table table-bordered text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
          <h1>MOCHILA</h1>
          <div id="upload">
-           <input id="ButtonUploadFile" type="file" text="Escolha um arquivo" class="btn btn-submit2" />
-            <asp:Button ID="ButtonEnviarArquivo" runat="server" Text="Enviar" class="btn btn-submit2" />
+             <asp:FileUpload ID="FileUploadMochila" runat="server" text="Escolha um arquivo" class="btn btn-submit2" />
+            <asp:Button ID="ButtonEnviarArquivo" runat="server" Text="Enviar" class="btn btn-submit2" OnClick="ButtonEnviarArquivo_Click" />
         </div>
          <div id="seusarquivos">
          </div>

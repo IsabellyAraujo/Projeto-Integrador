@@ -100,5 +100,21 @@ namespace Projeto_Integrador
             mochila.Update(arquivo);
             Response.Redirect("~\\Mochila.aspx");
         }
+
+        protected void ButtonEnviarArquivo_Click(object sender, EventArgs e)
+        {
+            string filename;
+
+            // Salva arquivo na pasta ArquivosInseridos
+            filename = Request.PhysicalApplicationPath + "ArquivosInseridos\\" +
+                          FileUploadMochila.FileName;
+            FileUploadMochila.SaveAs(filename);
+            string tamanhoDoArquivo = FileUploadMochila.FileBytes.ToString();
+
+            arquivo = new Modelo.Mochila(0, filename, "", tamanhoDoArquivo, Session["userId"].ToString());
+            mochila.Insert(arquivo);
+
+
+        }
     }
 }

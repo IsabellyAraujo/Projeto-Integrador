@@ -27,8 +27,7 @@ namespace Projeto_Integrador.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand("sp_listarTodosArquivosUsuario", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
+            SqlCommand cmd = new SqlCommand("Select id, descricao, endereco, tamanhoArquivo, horarioDeEnvio, usuario_id from Arquivo where usuario_id = @usuario_id", conn);
             cmd.Parameters.AddWithValue("@usuario_id", user_id);
 
             SqlDataReader dr = cmd.ExecuteReader();
@@ -86,7 +85,7 @@ namespace Projeto_Integrador.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand("sp_deletarUmaMochila", conn);
+            SqlCommand cmd = new SqlCommand("sp_deletarUmArquivo", conn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@id", obj.id);
 
