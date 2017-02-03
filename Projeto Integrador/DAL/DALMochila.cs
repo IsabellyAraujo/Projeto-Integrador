@@ -27,7 +27,7 @@ namespace Projeto_Integrador.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand("Select id, descricao, endereco, tamanhoArquivo, horarioDeEnvio, usuario_id from Arquivo where usuario_id = @usuario_id", conn);
+            SqlCommand cmd = new SqlCommand("Select id, descricao, endereco, tamanhoArquivo, usuario_id from Arquivo where usuario_id = @usuario_id", conn);
             cmd.Parameters.AddWithValue("@usuario_id", user_id);
 
             SqlDataReader dr = cmd.ExecuteReader();
@@ -36,10 +36,11 @@ namespace Projeto_Integrador.DAL
             {
                 while (dr.Read())
                 {
+                    System.Guid guid = dr["endereco"];
                     aMochila = new Modelo.Mochila(
                         dr.GetInt32(0),
                         dr.GetString(1),
-                        dr.GetString(2),
+                        guid,
                         dr.GetString(3),
                         dr.GetString(4)
                         );

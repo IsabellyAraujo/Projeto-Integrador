@@ -30,5 +30,12 @@ namespace Projeto_Integrador.Modelo
             this.tamanhoArquivo = atamanhoArquivo;
             this.usuario_id = ausuario_id;
         }
+        public Mochila(string adescricao, string aendereco, string atamanhoArquivo, string ausuario_id)
+        {
+            this.descricao = adescricao;
+            this.endereco = aendereco;
+            this.tamanhoArquivo = atamanhoArquivo;
+            this.usuario_id = ausuario_id;
+        }
     }
 }

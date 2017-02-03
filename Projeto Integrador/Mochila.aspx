@@ -10,16 +10,22 @@
             <asp:Button ID="ButtonEnviarArquivo" runat="server" Text="Enviar" class="btn btn-submit2" OnClick="ButtonEnviarArquivo_Click" />
         </div>
          <div id="seusarquivos">
+             <asp:DataList ID="DataListMochila" runat="server" DataSourceID="ObjectDataSourceMochila">
+                 <ItemTemplate>
+                      <asp:GridView ID="GridViewMochila" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSourceMochila">
+                        <Columns>
+                            <asp:BoundField DataField="descricao" HeaderText="descricao" SortExpression="descricao" />
+                        </Columns>
+                      </asp:GridView>
+                 </ItemTemplate>
+             </asp:DataList>
          </div>
      </div>
-    <%--<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
-        <Columns>
-            <asp:BoundField DataField="descricao" HeaderText="descricao" SortExpression="descricao" />
-        </Columns>
-    </asp:GridView>--%>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:2016TiiGrupo3ConnectionString %>" SelectCommand="SELECT [descricao] FROM [Arquivo] WHERE ([usuario_id] = @usuario_id)">
+   
+    <asp:ObjectDataSource ID="ObjectDataSourceMochila" runat="server" SelectMethod="SelectAll" TypeName="Projeto_Integrador.DAL.DALMochila">
         <SelectParameters>
             <asp:SessionParameter Name="usuario_id" SessionField="userId" Type="Object" />
         </SelectParameters>
-    </asp:SqlDataSource>
+    </asp:ObjectDataSource>
+   
 </asp:Content>

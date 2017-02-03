@@ -103,15 +103,15 @@ namespace Projeto_Integrador
 
         protected void ButtonEnviarArquivo_Click(object sender, EventArgs e)
         {
-            string filename;
+            string endereco;
 
             // Salva arquivo na pasta ArquivosInseridos
-            filename = Request.PhysicalApplicationPath + "ArquivosInseridos\\" +
+            endereco = Request.PhysicalApplicationPath + "ArquivosInseridos\\" +
                           FileUploadMochila.FileName;
-            FileUploadMochila.SaveAs(filename);
+            FileUploadMochila.SaveAs(endereco);
+            string descricao = FileUploadMochila.FileName;
             string tamanhoDoArquivo = FileUploadMochila.FileBytes.ToString();
-
-            arquivo = new Modelo.Mochila(0, filename, "", tamanhoDoArquivo, Session["userId"].ToString());
+            arquivo = new Modelo.Mochila(0, descricao, descricao, tamanhoDoArquivo, Session["userId"].ToString());
             mochila.Insert(arquivo);
 
 
