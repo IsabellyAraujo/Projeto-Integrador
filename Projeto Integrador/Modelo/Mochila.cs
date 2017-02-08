@@ -9,15 +9,13 @@ namespace Projeto_Integrador.Modelo
     {
  
         public int id;
-
-        public string descricao; 
-
-        public string endereco;
+        public string descricao
+        { get; set; }
+        public string endereco
+        { get; set; }
         public string tamanhoArquivo;
-
-
-
-        public string usuario_id;
+        public Guid usuario_id
+        { get; set; }    
 
         public Mochila()
         {
@@ -25,10 +23,10 @@ namespace Projeto_Integrador.Modelo
             this.descricao = "";
             this.endereco = "";
             this.tamanhoArquivo = "";
-            this.usuario_id = "";
+            this.usuario_id = Guid.NewGuid(); 
         }
 
-        public Mochila(int aid, string adescricao, string aendereco, string atamanhoArquivo, string ausuario_id)
+        public Mochila(int aid, string adescricao, string aendereco, string atamanhoArquivo, Guid ausuario_id)
         {
             this.id = aid;
             this.descricao = adescricao;
@@ -36,12 +34,19 @@ namespace Projeto_Integrador.Modelo
             this.tamanhoArquivo = atamanhoArquivo;
             this.usuario_id = ausuario_id;
         }
-        public Mochila(string adescricao, string aendereco, string atamanhoArquivo, string ausuario_id)
+        public Mochila(string adescricao, string aendereco, string atamanhoArquivo, Guid ausuario_id)
         {
             this.descricao = adescricao;
             this.endereco = aendereco;
             this.tamanhoArquivo = atamanhoArquivo;
             this.usuario_id = ausuario_id;
+        }
+        public Mochila(int aid, string adescricao, string aendereco, string atamanhoArquivo)
+        {
+            this.id = aid;
+            this.descricao = adescricao;
+            this.endereco = aendereco;
+            this.tamanhoArquivo = atamanhoArquivo;
         }
     }
 }

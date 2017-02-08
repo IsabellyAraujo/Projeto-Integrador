@@ -27,7 +27,7 @@ namespace Projeto_Integrador
            // arquivo = new Modelo.Mochila(0, FileUpload1.FileName, directory, "", Session["userId"].ToString());
             mochila.Insert(arquivo);
 
-            Response.Redirect("~\\Mochila.aspx");
+            //Response.Redirect("~\\Mochila.aspx");
         }
 
         protected void DownloadArquivo(object sender, EventArgs e)
@@ -75,6 +75,7 @@ namespace Projeto_Integrador
                     tr.Cells.Add(tc);
 
                     //Table1.Rows.Add(tr);
+                    
                 }
             }
         }
@@ -84,7 +85,7 @@ namespace Projeto_Integrador
             string[] file = (sender as Button).CommandArgument.Split(';');
             int id = Convert.ToInt32(file[0]);
             string path = Request.PhysicalApplicationPath.ToString() + Session["userId"].ToString() + "\\" + file[1];
-            arquivo = new Modelo.Mochila(id, "", "", "", "");
+            arquivo = new Modelo.Mochila(id, "", "", "");
             mochila.Delete(arquivo);
             System.IO.File.Delete(path);
             Response.Redirect("~\\Mochila.aspx");
@@ -95,25 +96,34 @@ namespace Projeto_Integrador
             string[] file = (sender as Button).CommandArgument.Split(';');
             int id = Convert.ToInt32(file[0]);
             string descricao = file[1];
-            arquivo = new Modelo.Mochila(id, descricao, "", "", "");
+            arquivo = new Modelo.Mochila(id, descricao, "", "");
             mochila.Update(arquivo);
             Response.Redirect("~\\Mochila.aspx");
         }
 
         protected void ButtonEnviarArquivo_Click(object sender, EventArgs e)
         {
+           // string = Session["userId"];
+           // Guid usuario_id;
+            //usuario_id = Guid.TryParse(Session["userId"]);
+          //  Guid usuario_id = Guid.NewGuid();
             string endereco;
-
             // Salva arquivo na pasta ArquivosInseridos
             endereco = Request.PhysicalApplicationPath + "ArquivosInseridos\\" +
                           FileUploadMochila.FileName;
+
+            string enderecoInsert = FileUploadMochila.FileName;
             FileUploadMochila.SaveAs(endereco);
             string descricao = FileUploadMochila.FileName;
             string tamanhoDoArquivo = FileUploadMochila.FileBytes.ToString();
-            arquivo = new Modelo.Mochila(0, descricao, endereco, tamanhoDoArquivo, Session["userId"].ToString());
+
+            string guidString = Session["userId"].ToString().Trim();
+            Guid myGuid = new Guid(guidString);
+
+            arquivo = new Modelo.Mochila(descricao, enderecoInsert, tamanhoDoArquivo, myGuid);
             mochila.Insert(arquivo);
 
-
+            
         }
     }
 }

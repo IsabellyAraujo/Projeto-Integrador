@@ -39,6 +39,7 @@ namespace Projeto_Integrador.DAL
                     int id = dr.GetInt32(0);
                     string descricao = dr.GetString(1);
                     string endereco = dr[2].ToString();
+
                     string tamanhoArquivo = dr.GetString(3);
                     Guid usuario_id = dr.GetGuid(4);
                     aMochila = new Modelo.Mochila(
@@ -73,9 +74,9 @@ namespace Projeto_Integrador.DAL
             Modelo.Mochila aMochila = new Modelo.Mochila(
                         dr.GetInt32(0),
                         dr.GetString(1),
-                        (dr[2] as Nullable<Guid>).ToString(),
+                        dr.GetString(2),
                         dr.GetString(3),
-                        dr.GetString(4)
+                        dr.GetGuid(4)
                         );
 
             dr.Close();
@@ -90,8 +91,7 @@ namespace Projeto_Integrador.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand("sp_deletarUmArquivo", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
+            SqlCommand cmd = new SqlCommand("Delete id, descricao, endereco, tamanhoArquivo from Arquivo where usuario_id = @usuario_id", conn);
             cmd.Parameters.AddWithValue("@id", obj.id);
 
             cmd.ExecuteNonQuery();
@@ -106,7 +106,7 @@ namespace Projeto_Integrador.DAL
             SqlCommand cmd = new SqlCommand("sp_inserirArquivo", conn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@descricao", obj.descricao);
-            cmd.Parameters.AddWithValue("@endereco", obj.endereco);
+            cmd.Parameters.AddWithValue("@endereco", "~/ArquivosInseridos/" + obj.endereco);
             cmd.Parameters.AddWithValue("@tamanhoArquivo", obj.tamanhoArquivo);
             cmd.Parameters.AddWithValue("@usuario_id", obj.usuario_id);
 

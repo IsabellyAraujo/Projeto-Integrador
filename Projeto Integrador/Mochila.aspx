@@ -12,11 +12,13 @@
          <div id="seusarquivos">
              <asp:DataList ID="DataListMochila" runat="server" DataSourceID="ObjectDataSourceMochila">
                  <ItemTemplate>
-                      <asp:GridView ID="GridViewMochila" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSourceMochila">
-                        <Columns>
-                            <asp:BoundField DataField="descricao" HeaderText="descricao" SortExpression="descricao" />
-                        </Columns>
-                      </asp:GridView>
+                     descricao:
+                     <asp:Label ID="descricaoLabel" runat="server" Text='<%# Eval("descricao") %>' />
+                     <br />
+                     <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("endereco") %>' />
+                     <br />
+                     <br />
+                     <br />
                  </ItemTemplate>
              </asp:DataList>
          </div>
