@@ -51,7 +51,7 @@ namespace Projeto_Integrador
             TableRow tr;
             TableCell tc;
             Button botao;
-           // TextBox texto;
+            // TextBox texto;
 
             //Le lista com arquivos
             if (Arquivos.Count > 0)
@@ -59,7 +59,6 @@ namespace Projeto_Integrador
                 foreach (Modelo.Mochila arquivo in Arquivos)
                 {
                     tr = new TableRow();
-
                     tc = new TableCell();
                     botao = new Button();
                     botao.Text = arquivo.descricao;
@@ -111,7 +110,7 @@ namespace Projeto_Integrador
             FileUploadMochila.SaveAs(endereco);
             string descricao = FileUploadMochila.FileName;
             string tamanhoDoArquivo = FileUploadMochila.FileBytes.ToString();
-            arquivo = new Modelo.Mochila(0, descricao, descricao, tamanhoDoArquivo, Session["userId"].ToString());
+            arquivo = new Modelo.Mochila(0, descricao, endereco, tamanhoDoArquivo, Session["userId"].ToString());
             mochila.Insert(arquivo);
 
 

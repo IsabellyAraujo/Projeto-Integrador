@@ -24,7 +24,7 @@
    
     <asp:ObjectDataSource ID="ObjectDataSourceMochila" runat="server" SelectMethod="SelectAll" TypeName="Projeto_Integrador.DAL.DALMochila">
         <SelectParameters>
-            <asp:SessionParameter Name="usuario_id" SessionField="userId" Type="Object" />
+            <asp:SessionParameter Name="user_id" SessionField="userId" Type="String" />
         </SelectParameters>
     </asp:ObjectDataSource>
    

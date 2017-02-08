@@ -7,11 +7,17 @@ namespace Projeto_Integrador.Modelo
 {
     public class Mochila
     {
-        public int id { get; set; }
-        public string descricao { get; set; }
-        public string endereco { get; set; }
-        public string tamanhoArquivo { get; set; }
-        public string usuario_id { get; set; }
+ 
+        public int id;
+
+        public string descricao; 
+
+        public string endereco;
+        public string tamanhoArquivo;
+
+
+
+        public string usuario_id;
 
         public Mochila()
         {

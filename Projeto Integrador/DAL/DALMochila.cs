@@ -36,13 +36,17 @@ namespace Projeto_Integrador.DAL
             {
                 while (dr.Read())
                 {
-                    System.Guid guid = dr["endereco"];
+                    int id = dr.GetInt32(0);
+                    string descricao = dr.GetString(1);
+                    string endereco = dr[2].ToString();
+                    string tamanhoArquivo = dr.GetString(3);
+                    Guid usuario_id = dr.GetGuid(4);
                     aMochila = new Modelo.Mochila(
-                        dr.GetInt32(0),
-                        dr.GetString(1),
-                        guid,
-                        dr.GetString(3),
-                        dr.GetString(4)
+                        id,
+                        descricao,
+                        endereco, //(dr[2] as Nullable<Guid>).ToString(),
+                        tamanhoArquivo,
+                        usuario_id
                         );
                     aListMochila.Add(aMochila);
                 }
@@ -69,7 +73,7 @@ namespace Projeto_Integrador.DAL
             Modelo.Mochila aMochila = new Modelo.Mochila(
                         dr.GetInt32(0),
                         dr.GetString(1),
-                        dr.GetString(2),
+                        (dr[2] as Nullable<Guid>).ToString(),
                         dr.GetString(3),
                         dr.GetString(4)
                         );
