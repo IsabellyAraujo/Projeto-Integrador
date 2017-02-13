@@ -8,16 +8,9 @@
 						  <tr>
 							  <th>
 								<div class="entrarecriarsala">
-								  <input type="submit" value="Entre" class="btn btn-submit" style= "width:100%;" onclick="window.location='entrarsala.html';" />  
+                                    <asp:Button ID="ButtonCriarSalaRed" class="btn btn-submit" OnClick="ButtonCriarSalaRed_Click"    runat="server" Text="CRIAR" />
 							  </div>	
 							</th>
-							  <th>
-								  <div class="entrarecriarsala">
-									  <input type="submit" value="Crie" class="btn btn-submit" style= "width:100%;" onclick="window.location='criarsala.html';">
-									   <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/CriarSala.aspx">Criar Sala</asp:HyperLink>
-									   </input>
-								  </div>
-							  </th>
 						  </tr>
 					  </table>
 					 <text align="center"><h2>SUAS SALAS</h2></text>
@@ -25,6 +18,7 @@
 						  <tr>
 							  <th>
 								<div class="entrarecriarsala">
+                              
 								 <input type="submit" value="SALA 1" class="btn btn-submit" onclick="window.location='htmldasala.html';" />  
 							  </div>	
 							</th>

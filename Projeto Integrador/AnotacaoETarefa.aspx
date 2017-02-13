@@ -19,7 +19,7 @@
             </div>
             <asp:DataList ID="DataListTarefa" runat="server" DataSourceID="ObjectDataSourceTarefa">
                 <ItemTemplate>
-                    <%-- inserir --%>
+                    <%-- favoritar --%>
                     <asp:Label ID="LabelTarefasId" runat="server" OnPreRender="LabelTarefasId_PreRender" Text='<%# Eval("id") %>'></asp:Label>
                         <asp:Label ID="descricaoLabel" runat="server" Text='<%# Eval("descricao") %>' />
                     <br />

@@ -13,5 +13,9 @@ namespace Projeto_Integrador
         {
 
         }
+        protected void ButtonCriarSalaRed_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/CriarSala.aspx");
+        }
     }
 }

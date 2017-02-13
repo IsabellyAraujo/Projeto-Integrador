@@ -13,12 +13,12 @@ namespace Projeto_Integrador {
     public partial class Salas {
         
         /// <summary>
-        /// HyperLink1 control.
+        /// ButtonCriarSalaRed control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
+        protected global::System.Web.UI.WebControls.Button ButtonCriarSalaRed;
     }
 }

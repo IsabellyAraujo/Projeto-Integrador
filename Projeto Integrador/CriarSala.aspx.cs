@@ -14,7 +14,7 @@ namespace Projeto_Integrador
 
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void ButtonCriarSala_Click(object sender, EventArgs e)
         {
             Modelo.Sala Sala = new Modelo.Sala(0, Name.Text, Password.Text);
             DAL.DALSala aSala = new DAL.DALSala();

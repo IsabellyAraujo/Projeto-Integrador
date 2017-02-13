@@ -9,30 +9,33 @@ namespace Projeto_Integrador
 {
     public partial class Mochila : System.Web.UI.Page
     {
+        int arquivo_id;
+        string arquivo_idString;
         Modelo.Mochila arquivo;
         DAL.DALMochila mochila = new DAL.DALMochila();
         
+       //page load
         protected void Page_Load(object sender, EventArgs e)
         {
             MostrarArquivos();
         }
 
-        protected void Upload_Click(object sender, EventArgs e)
+        //protected void Upload_Click(object sender, EventArgs e)
+        //{
+        //    //Salva arquivo na pasta do usuário
+        //    string directory = Request.PhysicalApplicationPath + Session["userId"] + "\\";
+        //    //FileUpload1.SaveAs(directory + FileUpload1.FileName);
+
+        //    //Insere arquivo no BD
+        //   // arquivo = new Modelo.Mochila(0, FileUpload1.FileName, directory, "", Session["userId"].ToString());
+        //    mochila.Insert(arquivo);
+
+        //    //Response.Redirect("~\\Mochila.aspx");
+        //}
+
+        protected void LinkButtonDownloadArquivo(object sender, EventArgs e)
         {
-            //Salva arquivo na pasta do usuário
-            string directory = Request.PhysicalApplicationPath + Session["userId"] + "\\";
-            //FileUpload1.SaveAs(directory + FileUpload1.FileName);
-
-            //Insere arquivo no BD
-           // arquivo = new Modelo.Mochila(0, FileUpload1.FileName, directory, "", Session["userId"].ToString());
-            mochila.Insert(arquivo);
-
-            //Response.Redirect("~\\Mochila.aspx");
-        }
-
-        protected void DownloadArquivo(object sender, EventArgs e)
-        {
-            string path = Request.PhysicalApplicationPath.ToString() + Session["userId"].ToString() + "\\" + (sender as Button).Text;
+            string path = Request.PhysicalApplicationPath.ToString() + Session["userId"].ToString() + "\\" + (sender as LinkButton).Text;
             System.IO.FileInfo file = new System.IO.FileInfo(path);
             if (file.Exists)
             {
@@ -42,6 +45,7 @@ namespace Projeto_Integrador
                 Response.ContentType = "application/octet-stream";
             }
         }
+        //lista arquivos
 
         protected void MostrarArquivos()
         {
@@ -50,8 +54,6 @@ namespace Projeto_Integrador
 
             TableRow tr;
             TableCell tc;
-            Button botao;
-            // TextBox texto;
 
             //Le lista com arquivos
             if (Arquivos.Count > 0)
@@ -60,53 +62,51 @@ namespace Projeto_Integrador
                 {
                     tr = new TableRow();
                     tc = new TableCell();
-                    botao = new Button();
-                    botao.Text = arquivo.descricao;
-                    botao.Click += DownloadArquivo;
-                    tc.Controls.Add(botao);
                     tr.Cells.Add(tc);
-
-                    tc = new TableCell();
-                    botao = new Button();
-                    botao.Text = "Excluir";
-                    botao.Click += DeletarArquivo;
-                    botao.CommandArgument = arquivo.id + ";" + arquivo.descricao;
-                    tc.Controls.Add(botao);
-                    tr.Cells.Add(tc);
-
-                    //Table1.Rows.Add(tr);
-                    
                 }
             }
         }
-
-        protected void DeletarArquivo(object sender, EventArgs e)
+        //excluir arquivo
+        protected void LinkButtonExcluirArquivo(object sender, EventArgs e)
         {
-            string[] file = (sender as Button).CommandArgument.Split(';');
-            int id = Convert.ToInt32(file[0]);
-            string path = Request.PhysicalApplicationPath.ToString() + Session["userId"].ToString() + "\\" + file[1];
-            arquivo = new Modelo.Mochila(id, "", "", "");
-            mochila.Delete(arquivo);
-            System.IO.File.Delete(path);
+            DAL.DALMochila DALMochila = new DAL.DALMochila();
+            Modelo.Mochila mochila = new Modelo.Mochila(int.Parse((sender as LinkButton).CommandName));
+            DALMochila.Delete(mochila);
             Response.Redirect("~\\Mochila.aspx");
         }
 
-        protected void AtualizarArquivo(object sender, EventArgs e)
+        protected void LinkButtonExcluirArquivo_PreRender(object sender, EventArgs e)
         {
-            string[] file = (sender as Button).CommandArgument.Split(';');
+            (sender as LinkButton).CommandName = arquivo_id.ToString();
+        }
+
+        protected void LinkButtonEditarDescricaoArquivo_Click(object sender, EventArgs e)
+        {
+            //TextBoxDescricaoArquivoEditar.Visible = true;
+            //ButtonSalvarDescricaoArquivo.Visible = true;
+            string[] file = (sender as LinkButton).CommandArgument.Split(';');
             int id = Convert.ToInt32(file[0]);
             string descricao = file[1];
-            arquivo = new Modelo.Mochila(id, descricao, "", "");
+            arquivo = new Modelo.Mochila(id, descricao);
             mochila.Update(arquivo);
             Response.Redirect("~\\Mochila.aspx");
         }
+        protected void LinkButtonEditarDescricaoArquivo_PreRender(object sender, EventArgs e)
+        {
+            (sender as LinkButton).CommandName = arquivo_id.ToString();
+        }
+        //protected void LinkButtonEditarDescricaoArquivo_Click(object sender, EventArgs e)
+        //{
+        //    TextBoxDescricaoArquivoEditar.Visible = true;
 
+        //    DAL.DALMochila DALMochila = new DAL.DALMochila();
+        //    TextBoxDescricaoArquivoEditar.Text = DALMochila.SelectOne((sender as LinkButton).CommandName).descricao.ToString();
+        //    arquivo_idString = DALMochila.SelectOne((sender as LinkButton).CommandName).id.ToString();
+        //}
+
+        //upload de arquivo
         protected void ButtonEnviarArquivo_Click(object sender, EventArgs e)
         {
-           // string = Session["userId"];
-           // Guid usuario_id;
-            //usuario_id = Guid.TryParse(Session["userId"]);
-          //  Guid usuario_id = Guid.NewGuid();
             string endereco;
             // Salva arquivo na pasta ArquivosInseridos
             endereco = Request.PhysicalApplicationPath + "ArquivosInseridos\\" +
@@ -123,7 +123,7 @@ namespace Projeto_Integrador
             arquivo = new Modelo.Mochila(descricao, enderecoInsert, tamanhoDoArquivo, myGuid);
             mochila.Insert(arquivo);
 
-            
+            Response.Redirect("~\\Mochila.aspx");
         }
     }
 }

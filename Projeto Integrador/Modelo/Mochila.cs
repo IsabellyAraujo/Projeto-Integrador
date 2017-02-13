@@ -48,5 +48,14 @@ namespace Projeto_Integrador.Modelo
             this.endereco = aendereco;
             this.tamanhoArquivo = atamanhoArquivo;
         }
+        public Mochila(int aid, string adescricao)
+        {
+            this.id = aid;
+            this.descricao = adescricao;
+        }
+        public Mochila(int aid)
+        {
+            this.id = aid;
+        }
     }
 }

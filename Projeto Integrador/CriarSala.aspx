@@ -9,7 +9,6 @@
         </div>
         <div class="formulario col-md-4 col-md-offset-4 col-sm-10 col-sm-offset-1">
             <div class="contact-form bottom">
-                <form id="main-contact-form" name="contact-form" method="post" action="">
                     <div class="form-group">
                         <asp:TextBox ID="Name" runat="server" type="username" class="form-control" required="required" placeholder="Nome da sala"></asp:TextBox>
                     </div>
@@ -21,10 +20,10 @@
                         <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="CompareValidator" ControlToValidate="ConfirmPassword" ControlToCompare="Password"></asp:CompareValidator>
                     </div>
                     <div class="form-group">
-                        <asp:Button ID="Button1" runat="server" Text="Criar sala" type="submit" name="submit" class="btn btn-submit" OnClick="Button1_Click" /><br />
+                        <asp:Button ID="ButtonCriarSala" runat="server" Text="Criar sala" type="submit" name="submit" class="btn btn-submit" OnClick="ButtonCriarSala_Click" /><br />
                     </div>
-                    <a href="EntrarSala.aspx">Entre numa sala</a>
-                </form>
+                    <a href="Sala.aspx">Entre numa sala</a>
+
             </div>
         </div>
     </div>
