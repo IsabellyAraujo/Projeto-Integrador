@@ -25,8 +25,8 @@
                      <asp:Image ID="ImageArquivoInserido" Width="250px" runat="server" ImageUrl='<%# Eval("endereco") %>' />
                      <br />
                      <asp:LinkButton ID="LinkButtonEditarDescricaoArquivo" OnClick="LinkButtonEditarDescricaoArquivo_Click" OnPreRender="LinkButtonEditarDescricaoArquivo_PreRender" runat="server">Editar</asp:LinkButton>
-                     &nbsp;<asp:LinkButton ID="LinkButtonExcluirArquivo" OnPreRender="LinkButtonExcluirArquivo_PreRender" runat="server">Excluir</asp:LinkButton>
-                    &nbsp; <asp:LinkButton ID="LinkButtonDownloadArquivo" OnPreRender="LinkButtonDownloadArquivo_PreRender" runat="server">Download</asp:LinkButton>
+                     &nbsp;<asp:LinkButton ID="LinkButtonExcluirArquivo" OnPreRender="LinkButtonExcluirArquivo_PreRender" runat="server" OnClick="LinkButtonExcluirArquivo_Click">Excluir</asp:LinkButton>
+                    &nbsp; <asp:LinkButton ID="LinkButtonDownloadArquivo" OnPreRender="LinkButtonDownloadArquivo_PreRender" runat="server" OnClick="LinkButtonDownloadArquivo_Click">Download</asp:LinkButton>
                      <br />
                      <br />
                  </ItemTemplate>

@@ -71,13 +71,21 @@ namespace Projeto_Integrador.DAL
 
             SqlDataReader dr = cmd.ExecuteReader();
 
-            Modelo.Mochila aMochila = new Modelo.Mochila(
-                        dr.GetInt32(0),
-                        dr.GetString(1),
-                        dr.GetString(2),
-                        dr.GetString(3),
-                        dr.GetGuid(4)
+            Modelo.Mochila aMochila = new Modelo.Mochila();
+            if(dr.Read()){
+                        aMochila = new Modelo.Mochila(
+                            dr.GetInt32(0),
+                            dr.GetString(1),
+                            dr.GetString(2),
+                            dr.GetString(3),
+                            dr.GetDateTime(4),
+                            dr.GetGuid(5)
+                            //Convert.ToInt32(dr["id"]),
+                            //dr["descricao"].ToString(),
+                            //dr["endereco"].ToString(),
+                            //dr["tamanhoArquivo"].ToString(),
                         );
+            }
 
             dr.Close();
             conn.Close();
@@ -91,7 +99,8 @@ namespace Projeto_Integrador.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand("Delete id, descricao, endereco, tamanhoArquivo from Arquivo where usuario_id = @usuario_id", conn);
+            SqlCommand cmd = new SqlCommand("sp_deletarUmArquivo", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@id", obj.id);
 
             cmd.ExecuteNonQuery();

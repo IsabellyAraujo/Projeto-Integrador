@@ -59,6 +59,7 @@
                     <asp:TextBox ID="TextBoxAnotacoesDescricao" runat="server" placeholder="Digite sua anotação" Visible="False" Width="100%" TextMode="MultiLine"></asp:TextBox>
                     <br />
                     <asp:Button ID="ButtonSalvarAnotacoes" runat="server" class="btn btn-submitsalvar" Text="Salvar" Visible="False" OnClick="ButtonSalvarAnotacoes_Click" />
+                    <asp:Button ID="ButtonEditarSalvar" runat="server" class="btn btn-submitsalvar" Text="Salvar" Visible="False" OnClick="ButtonEditarSalvar_Click" />
                 </div>
                <!--Exibição de dados-->
                  <asp:DataList ID="DataListAnotacao" runat="server" DataSourceID="ObjectDataSourceAnotacao">

@@ -96,7 +96,8 @@ namespace Projeto_Integrador
             LabelAnotacoesTitulo.Visible = true;
             TextBoxAnotacoesTitulo.Visible = true;
             TextBoxAnotacoesDescricao.Visible = true;
-            ButtonSalvarAnotacoes.Visible = true;
+            ButtonEditarSalvar.Visible = true;
+            ButtonSalvarAnotacoes.Visible = false;
 
             DAL.DALAnotacao DALAnotacao = new DAL.DALAnotacao();
             TextBoxAnotacoesTitulo.Text = DALAnotacao.SelectOne((sender as LinkButton).CommandName).titulo.ToString();
@@ -104,15 +105,15 @@ namespace Projeto_Integrador
             anotacao_idString = DALAnotacao.SelectOne((sender as LinkButton).CommandName).id.ToString();
         }
         //    //editar anotações
-        //protected void LinkButtonEditarAnotacoes_Click(object sender, EventArgs e)
-        //{
-        //    string tituloAnotacao = TextBoxAnotacoesTitulo.Text;
-        //    string descricaoAnotacao = TextBoxAnotacoesDescricao.Text;
-        //    DateTime horarioDeEnvio = DateTime.Now;
-        //    Modelo.Anotacao anotacao = new Modelo.Anotacao(int.Parse((sender as LinkButton).CommandName), TextBoxAnotacoesTitulo.Text, TextBoxAnotacoesDescricao.Text, horarioDeEnvio);
-        //    DAL.DALAnotacao DALAnotacao = new DAL.DALAnotacao();
-        //    DALAnotacao.Update(anotacao);
-        //}
+        protected void ButtonEditarSalvar_Click(object sender, EventArgs e)
+        {
+            string tituloAnotacao = TextBoxAnotacoesTitulo.Text;
+            string descricaoAnotacao = TextBoxAnotacoesDescricao.Text;
+            DateTime horarioDeEnvio = DateTime.Now;
+            Modelo.Anotacao anotacao = new Modelo.Anotacao(int.Parse((sender as LinkButton).CommandName), TextBoxAnotacoesTitulo.Text, TextBoxAnotacoesDescricao.Text, horarioDeEnvio);
+            DAL.DALAnotacao DALAnotacao = new DAL.DALAnotacao();
+            DALAnotacao.Update(anotacao);
+        }
         protected void ButtonEditarAnotacoes_PreRender(object sender, EventArgs e)
         {
             (sender as LinkButton).CommandName = anotacao_idString;

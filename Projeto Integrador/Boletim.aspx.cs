@@ -13,5 +13,10 @@ namespace Projeto_Integrador
         {
 
         }
+
+        protected void ButtonCriarBoletim_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
