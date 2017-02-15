@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Projeto_Integrador.Modelo;
 
 namespace Projeto_Integrador
 {
@@ -11,6 +12,7 @@ namespace Projeto_Integrador
     {
         int arquivo_id;
         string arquivo_idString;
+        string arquivo_descricao;
         Modelo.Mochila arquivo;
         DAL.DALMochila mochila = new DAL.DALMochila();
         
@@ -45,6 +47,12 @@ namespace Projeto_Integrador
                 Response.ContentType = "application/octet-stream";
             }
         }
+        protected void LinkButtonDownloadArquivo_PreRender(object sender, EventArgs e)
+        {
+            (sender as LinkButton).CommandName = arquivo_id.ToString();
+        }
+        
+        
         //lista arquivos
 
         protected void MostrarArquivos()
@@ -82,18 +90,18 @@ namespace Projeto_Integrador
 
         protected void LinkButtonEditarDescricaoArquivo_Click(object sender, EventArgs e)
         {
-            //TextBoxDescricaoArquivoEditar.Visible = true;
+           // TextBoxDescricaoArquivoEditar.Visible = true;
             //ButtonSalvarDescricaoArquivo.Visible = true;
-            string[] file = (sender as LinkButton).CommandArgument.Split(';');
-            int id = Convert.ToInt32(file[0]);
-            string descricao = file[1];
-            arquivo = new Modelo.Mochila(id, descricao);
-            mochila.Update(arquivo);
-            Response.Redirect("~\\Mochila.aspx");
+            //string[] file = (sender as LinkButton).CommandArgument.Split(';');
+            //int id = Convert.ToInt32(file[0]);
+            //string descricao = file[1];
+            //arquivo = new Modelo.Mochila(id, descricao);
+            //mochila.Update(arquivo);
+            //Response.Redirect("~\\Mochila.aspx");
         }
         protected void LinkButtonEditarDescricaoArquivo_PreRender(object sender, EventArgs e)
         {
-            (sender as LinkButton).CommandName = arquivo_id.ToString();
+            (sender as LinkButton).CommandName = arquivo_idString + ';' + arquivo_descricao;
         }
         //protected void LinkButtonEditarDescricaoArquivo_Click(object sender, EventArgs e)
         //{
@@ -125,5 +133,26 @@ namespace Projeto_Integrador
 
             Response.Redirect("~\\Mochila.aspx");
         }
+
+        protected void DataListMochila_ItemDataBound(object sender, DataListItemEventArgs e)
+        {
+            Projeto_Integrador.Modelo.Mochila m = (e.Item.DataItem as Projeto_Integrador.Modelo.Mochila);
+            arquivo_idString = m.id.ToString();
+            arquivo_descricao = m.descricao;
+        }
+
+        protected void DataListMochila_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            string[] file = e.CommandName.ToString().Split(';'); // Split(';');
+            int id = Convert.ToInt32(file[0]);
+            string descricao = file[1];
+            DAL.DALMochila dm = new DAL.DALMochila();
+            arquivo = dm.SelectOne(id.ToString());
+            //arquivo = new Modelo.Mochila(id, descricao);
+            //mochila.Update(arquivo);
+            Response.Redirect("~\\Mochila.aspx");
+        }
+
+
     }
 }

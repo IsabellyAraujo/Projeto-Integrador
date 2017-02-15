@@ -11,7 +11,11 @@
             <asp:Button ID="ButtonEnviarArquivo" runat="server" Text="Enviar" class="btn btn-submit2" OnClick="ButtonEnviarArquivo_Click" />
         </div>
          <div id="seusarquivos">
-             <asp:DataList ID="DataListMochila" runat="server" DataSourceID="ObjectDataSourceMochila">
+             <asp:DataList ID="DataListMochila" runat="server" DataSourceID="ObjectDataSourceMochila" OnItemCommand="DataListMochila_ItemCommand" OnItemDataBound="DataListMochila_ItemDataBound">
+                 <EditItemTemplate>
+                     <asp:TextBox ID="TextBoxDescricaoArquivoEditar" runat="server"></asp:TextBox>
+                     <asp:Button ID="ButtonSalvarDescricaoArquivo" runat="server" Text="Salvar" />
+                 </EditItemTemplate>
                  <ItemTemplate>
                      <%--editar--%>
                      <asp:TextBox ID="TextBoxDescricaoArquivoEditar" Visible="False" runat="server"></asp:TextBox>
@@ -21,8 +25,8 @@
                      <asp:Image ID="ImageArquivoInserido" Width="250px" runat="server" ImageUrl='<%# Eval("endereco") %>' />
                      <br />
                      <asp:LinkButton ID="LinkButtonEditarDescricaoArquivo" OnClick="LinkButtonEditarDescricaoArquivo_Click" OnPreRender="LinkButtonEditarDescricaoArquivo_PreRender" runat="server">Editar</asp:LinkButton>
-                     &nbsp;<asp:LinkButton ID="LinkButtonExcluirArquivo" OnClick="LinkButtonExcluirArquivo_Click" OnPreRender="LinkButtonExcluirArquivo_PreRender" runat="server">Excluir</asp:LinkButton>
-                    &nbsp; <asp:LinkButton ID="LinkButtonDownloadArquivo" OnClick="LinkButtonDownloadArquivo_Click" OnPreRender="LinkButtonDownloadArquivo_PreRender" runat="server">Download</asp:LinkButton>
+                     &nbsp;<asp:LinkButton ID="LinkButtonExcluirArquivo" OnPreRender="LinkButtonExcluirArquivo_PreRender" runat="server">Excluir</asp:LinkButton>
+                    &nbsp; <asp:LinkButton ID="LinkButtonDownloadArquivo" OnPreRender="LinkButtonDownloadArquivo_PreRender" runat="server">Download</asp:LinkButton>
                      <br />
                      <br />
                  </ItemTemplate>
