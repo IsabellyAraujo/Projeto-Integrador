@@ -11,7 +11,7 @@ namespace Projeto_Integrador
     {
         int anotacao_id;
         int tarefa_id;
-        string anotacao_idString;
+        string anotacao_idString, anotacao_idStringEditar;
         string tarefa_idString;
         bool visibilidade;
         protected void Page_Load(object sender, EventArgs e)
@@ -94,25 +94,39 @@ namespace Projeto_Integrador
         {
             LabelAnotacoesDescricao.Visible = true;
             LabelAnotacoesTitulo.Visible = true;
-            TextBoxAnotacoesTitulo.Visible = true;
-            TextBoxAnotacoesDescricao.Visible = true;
+            TextBoxAnotacoesTituloEditar.Visible = true;
+            TextBoxAnotacoesDescricaoEditar.Visible = true;
             ButtonEditarSalvar.Visible = true;
-            ButtonSalvarAnotacoes.Visible = false;
+            LabelAnotacoes_idSalvar.Visible = true;
 
             DAL.DALAnotacao DALAnotacao = new DAL.DALAnotacao();
-            TextBoxAnotacoesTitulo.Text = DALAnotacao.SelectOne((sender as LinkButton).CommandName).titulo.ToString();
-            TextBoxAnotacoesDescricao.Text = DALAnotacao.SelectOne((sender as LinkButton).CommandName).descricao.ToString();
-            anotacao_idString = DALAnotacao.SelectOne((sender as LinkButton).CommandName).id.ToString();
+            //TextBoxAnotacoesTituloEditar.Text = DALAnotacao.SelectOne((sender as LinkButton).CommandName).titulo.ToString();
+            //TextBoxAnotacoesDescricaoEditar.Text = DALAnotacao.SelectOne((sender as LinkButton).CommandName).descricao.ToString();
+            LabelAnotacoes_idSalvar.Text = (sender as LinkButton).CommandName;
+
+            LabelAnotacoes_idSalvar.Visible = false;
+
+            anotacao_idStringEditar = DALAnotacao.SelectOne((sender as LinkButton).CommandName).id.ToString();
         }
         //    //editar anotações
         protected void ButtonEditarSalvar_Click(object sender, EventArgs e)
         {
-            string tituloAnotacao = TextBoxAnotacoesTitulo.Text;
-            string descricaoAnotacao = TextBoxAnotacoesDescricao.Text;
+            string tituloAnotacao = TextBoxAnotacoesTituloEditar.Text;
+            string descricaoAnotacao = TextBoxAnotacoesDescricaoEditar.Text;
+            int anotacao_idSalvar = int.Parse(LabelAnotacoes_idSalvar.Text);
             DateTime horarioDeEnvio = DateTime.Now;
-            Modelo.Anotacao anotacao = new Modelo.Anotacao(int.Parse((sender as LinkButton).CommandName), TextBoxAnotacoesTitulo.Text, TextBoxAnotacoesDescricao.Text, horarioDeEnvio);
+            Modelo.Anotacao anotacao = new Modelo.Anotacao(anotacao_idSalvar, TextBoxAnotacoesTituloEditar.Text, TextBoxAnotacoesDescricaoEditar.Text, horarioDeEnvio);
             DAL.DALAnotacao DALAnotacao = new DAL.DALAnotacao();
             DALAnotacao.Update(anotacao);
+
+            LabelAnotacoesDescricao.Visible = false;
+            LabelAnotacoesTitulo.Visible = false;
+            TextBoxAnotacoesTituloEditar.Visible = false;
+            TextBoxAnotacoesDescricaoEditar.Visible = false;
+            ButtonEditarSalvar.Visible = false;
+            LabelAnotacoes_idSalvar.Visible = false;
+
+            Response.Redirect("~/AnotacaoETarefa.aspx");
         }
         protected void ButtonEditarAnotacoes_PreRender(object sender, EventArgs e)
         {

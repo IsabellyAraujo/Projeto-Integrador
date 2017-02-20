@@ -147,10 +147,11 @@ namespace Projeto_Integrador.DAL
 
             //SqlCommand cmd = new SqlCommand("sp_editarAnotacao", conn);
             //cmd.CommandType = CommandType.StoredProcedure;
-            SqlCommand cmd = new SqlCommand("Update Anotacao set titulo = @titulo and descricao = @descricao and horarioDeEnvio = @horarioDeEnvio where id = @id", conn);
+            SqlCommand cmd = new SqlCommand("Update Anotacao set titulo = @titulo, descricao = @descricao, horarioDeEnvio = @horarioDeEnvio where id = @id", conn);
             cmd.Parameters.AddWithValue("@id", obj.id);
             cmd.Parameters.AddWithValue("@titulo", obj.titulo);
             cmd.Parameters.AddWithValue("@descricao", obj.descricao);
+            cmd.Parameters.AddWithValue("@horarioDeEnvio", obj.horarioDeEnvio);
 
             cmd.ExecuteNonQuery();
         }

@@ -50,34 +50,32 @@
         <h1>ANOTAÇÕES</h1>
         <div class="anotacao col-sm-12 col-md-4 col-md-offset-2 wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
             <div class="botaocriaranotacao col-sm-12 col-md-12">
-                <asp:Button ID="ButtonAnotacoes" runat="server" Text="CRIAR" class="btn btn-submitcriar" OnClick="ButtonAnotacoes_Click" />
+                <asp:Button ID="ButtonAnotacoes" runat="server" Text="CRIAR" class="btn btn-submitcriar" OnClick="ButtonAnotacoes_Click" Width="58px" />
+                <asp:Label ID="LabelAnotacoes_idSalvar" runat="server" Text="Label" Visible="False"></asp:Label>
                 <div class="texto col-md-12 col-sm-12">
-                    &nbsp;<asp:Label ID="LabelAnotacoesTitulo" runat="server" Text="Titulo" Visible="False"></asp:Label>
+                    <%-- favoritar --%>&nbsp;<asp:Label ID="LabelAnotacoesTitulo" runat="server" Text="Titulo" Visible="False"></asp:Label>
                     <asp:TextBox ID="TextBoxAnotacoesTitulo" runat="server" Visible="False"></asp:TextBox>
+                    <%-- editar --%>&nbsp;<asp:TextBox ID="TextBoxAnotacoesTituloEditar" runat="server" Visible="False"></asp:TextBox>
                     <br />
                     <asp:Label ID="LabelAnotacoesDescricao" runat="server" Text="Anotação" Visible="False"></asp:Label>
                     <asp:TextBox ID="TextBoxAnotacoesDescricao" runat="server" placeholder="Digite sua anotação" Visible="False" Width="100%" TextMode="MultiLine"></asp:TextBox>
+                    <%-- config --%>
+                    <asp:TextBox ID="TextBoxAnotacoesDescricaoEditar" runat="server" Height="21px" TextMode="MultiLine" Visible="False" Width="158px"></asp:TextBox>
                     <br />
                     <asp:Button ID="ButtonSalvarAnotacoes" runat="server" class="btn btn-submitsalvar" Text="Salvar" Visible="False" OnClick="ButtonSalvarAnotacoes_Click" />
+                    <%-- inserir --%>
                     <asp:Button ID="ButtonEditarSalvar" runat="server" class="btn btn-submitsalvar" Text="Salvar" Visible="False" OnClick="ButtonEditarSalvar_Click" />
                 </div>
                <!--Exibição de dados-->
                  <asp:DataList ID="DataListAnotacao" runat="server" DataSourceID="ObjectDataSourceAnotacao">
                 <ItemTemplate>
-                    <%-- inserir --%>
+                    <%-- dados --%>
                     <asp:Label ID="LabelAnotacoesId" runat="server" OnPreRender="LabelAnotacoesId_PreRender" Text='<%# Eval("id") %>'></asp:Label>
                     <asp:Label ID="tituloLabel" runat="server" Text='<%# Eval("titulo") %>' Font-Bold="True" />
                     <br />
                     <asp:Label ID="descricaoLabel" runat="server" Text='<%# Eval("descricao") %>' />
                     <br />
-                    <%-- editar --%>
-                    <asp:Label ID="LabelTituloAnotacoesEditar" runat="server" Text="Titulo" Visible="False"></asp:Label>
-                    &nbsp;<asp:TextBox ID="TextBoxAnotacoesTituloEditar" runat="server" Visible="False"></asp:TextBox>
-                    <br />
-                    <asp:Label ID="LabelAnotacoesDescricaoEditar" runat="server" Text="Descrição" Visible="False"></asp:Label>
-                    <asp:TextBox ID="TextBoxAnotacoesDescricaoEditar" runat="server" Height="21px" TextMode="MultiLine" Visible="False" Width="158px"></asp:TextBox>
-                    &nbsp;<br /><a href="#">
-                        <!--favorito-->
+                        <!--botões-->
                     <asp:Image ID="ImageFavorito" runat="server" ImageUrl="~/Imagens/fav.png" Width="30" Height="30" OnPreRender="ImageFavorito_PreRender" />
                     <div class="configtexto col-md-12 col-sm-12">
                         &nbsp;<asp:ImageButton ID="ImageButtonFavoritarAnotacoes" runat="server" ImageUrl="~/Imagens/fav.png" OnClick="ImageButtonFavoritarAnotacoes_Click" OnPreRender="ImageButtonFavoritarAnotacoes_PreRender" Width="30px" />
