@@ -100,8 +100,8 @@ namespace Projeto_Integrador
             LabelAnotacoes_idSalvar.Visible = true;
 
             DAL.DALAnotacao DALAnotacao = new DAL.DALAnotacao();
-            //TextBoxAnotacoesTituloEditar.Text = DALAnotacao.SelectOne((sender as LinkButton).CommandName).titulo.ToString();
-            //TextBoxAnotacoesDescricaoEditar.Text = DALAnotacao.SelectOne((sender as LinkButton).CommandName).descricao.ToString();
+            TextBoxAnotacoesTituloEditar.Text = DALAnotacao.SelectOne((sender as LinkButton).CommandName).titulo.ToString();
+            TextBoxAnotacoesDescricaoEditar.Text = DALAnotacao.SelectOne((sender as LinkButton).CommandName).descricao.ToString();
             LabelAnotacoes_idSalvar.Text = (sender as LinkButton).CommandName;
 
             LabelAnotacoes_idSalvar.Visible = false;
@@ -139,7 +139,7 @@ namespace Projeto_Integrador
             TextBoxTarefaDescricao.Visible = true;
             ButtonSalvarTarefas.Visible = true;
         }
-                    //Salvar tarefas
+                    //Insere (Salva) tarefas
         protected void ButtonSalvarTarefa_Click(object sender, EventArgs e)
         {
             DAL.DALTarefa DALTarefa = new DAL.DALTarefa();
