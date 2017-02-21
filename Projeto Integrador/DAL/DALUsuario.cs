@@ -67,15 +67,12 @@ namespace Projeto_Integrador.DAL
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand("sp_editarUsuario", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
+            SqlCommand cmd = new SqlCommand("Update Usuario set nome = @nome, dataDeNascimento = @dataDeNascimento, enderecoFoto = @enderecoFoto, email = @email where id = @id", conn);
             cmd.Parameters.AddWithValue("@id", obj.Id);
-            cmd.Parameters.AddWithValue("@email", obj.Email);
-            cmd.Parameters.AddWithValue("@senha", obj.Senha);
             cmd.Parameters.AddWithValue("@nome", obj.Nome);
             cmd.Parameters.AddWithValue("@dataDeNascimento", obj.DataDeNascimento);
             cmd.Parameters.AddWithValue("@enderecoFoto", obj.EnderecoFoto);
-
+            cmd.Parameters.AddWithValue("@email", obj.Email);
             cmd.ExecuteNonQuery();
         }
     }

@@ -50,5 +50,11 @@ namespace Projeto_Integrador.Modelo
             this.descricao = adescricao;
           //  this.horarioDeEnvio = ahorarioDeEnvio;
         }
+        public Tarefa(int aid, string adescricao, DateTime ahorarioDeEnvio)
+        {
+            this.id = aid;
+            this.descricao = adescricao;
+            this.horarioDeEnvio = ahorarioDeEnvio;
+        }
     }
 }

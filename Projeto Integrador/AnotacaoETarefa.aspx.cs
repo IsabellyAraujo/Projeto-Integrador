@@ -12,7 +12,7 @@ namespace Projeto_Integrador
         int anotacao_id;
         int tarefa_id;
         string anotacao_idString, anotacao_idStringEditar;
-        string tarefa_idString;
+        string tarefa_idString, tarefa_idStringEditar;
         bool visibilidade;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -156,11 +156,6 @@ namespace Projeto_Integrador
             DAL.DALTarefa DALTarefa = new DAL.DALTarefa();
             visibilidade = DALTarefa.SelectValidarPrioridade(int.Parse((sender as Label).Text));
         }
-        //atualiza exclui tarefas
-        protected void LinkButtonExcluirTarefas_PreRender(object sender, EventArgs e)
-        {
-            (sender as LinkButton).CommandName = tarefa_id.ToString();
-        }
             //exclui tarefas
         protected void LinkButtonExcluirTarefas_Click(object sender, EventArgs e)
         {
@@ -169,34 +164,48 @@ namespace Projeto_Integrador
             DALTarefa.Delete(tarefa);
             Response.Redirect("~/AnotacaoETarefa.aspx");
         }
+        //atualiza exclui tarefas
+        protected void LinkButtonExcluirTarefas_PreRender(object sender, EventArgs e)
+        {
+            (sender as LinkButton).CommandName = tarefa_id.ToString();
+        }
             //editar tarefas
         protected void LinkButtonEditarTarefas_Click(object sender, EventArgs e)
         {
             LabelTarefaDescricao.Visible = true;
-            TextBoxTarefaDescricao.Visible = true;
-            ButtonSalvarTarefas.Visible = true;
+            TextBoxTarefasDescricaoEditar.Visible = true;
+            ButtonEditarSalvarTarefas.Visible = true;
             DAL.DALTarefa DALTarefa = new DAL.DALTarefa();
-            TextBoxTarefaDescricao.Text = DALTarefa.SelectOne((sender as LinkButton).CommandName).descricao.ToString();
+            TextBoxTarefasDescricaoEditar.Text = DALTarefa.SelectOne((sender as LinkButton).CommandName).descricao.ToString();
+            LabelSalvar_idTarefas.Text = (sender as LinkButton).CommandName;
+
+            LabelSalvar_idTarefas.Visible = false;
             tarefa_idString = DALTarefa.SelectOne((sender as LinkButton).CommandName).id.ToString();
-        }
-        //protected void LinkButtonEditarTarefas_Click(object sender, EventArgs e)
-        //{
             
-        //    string descricaoTarefa = TextBoxTarefaDescricao.Text;
-        //    DateTime horarioDeEnvio = DateTime.Now;
-        //    Modelo.Tarefa tarefa = new Modelo.Tarefa(int.Parse((sender as LinkButton).CommandName), TextBoxTarefaDescricao.Text);
-        //    DAL.DALTarefa DALTarefa = new DAL.DALTarefa();
-        //    DALTarefa.Update(tarefa);
-        //    DAL.DALAnotacao DALAnotacao = new DAL.DALAnotacao();
-           
-        //}
-        
-        
+        }
         //atualiza editar tarefas
         protected void LinkButtonEditarTarefas_PreRender(object sender, EventArgs e)
         {
             (sender as LinkButton).CommandName = tarefa_id.ToString();
         }
+        protected void ButtonEditarSalvarTarefas_Click1(object sender, EventArgs e)
+        {
+            string descricaoTarefa = TextBoxTarefasDescricaoEditar.Text;
+            int tarefa_idSalvar = int.Parse(LabelSalvar_idTarefas.Text);
+            DateTime horarioDeEnvio = DateTime.Now;
+            Modelo.Tarefa tarefa = new Modelo.Tarefa(tarefa_idSalvar, TextBoxTarefasDescricaoEditar.Text, horarioDeEnvio);
+
+            DAL.DALTarefa DALTarefa = new DAL.DALTarefa();
+            DALTarefa.Update(tarefa);
+
+            LabelTarefaDescricao.Visible = false;
+            TextBoxTarefasDescricaoEditar.Visible = false;
+            ButtonEditarSalvarTarefas.Visible = false;
+            LabelSalvar_idTarefas.Visible = false;
+
+            Response.Redirect("~/AnotacaoETarefa.aspx");
+        }
+       
         //PRIORIDADE
         protected void ImageButtonPriorizarTarefa_Click(object sender, ImageClickEventArgs e)
         {
@@ -217,5 +226,9 @@ namespace Projeto_Integrador
         {
             (sender as Image).Visible = visibilidade;
         }
+
+       
+
+        
     }
 }

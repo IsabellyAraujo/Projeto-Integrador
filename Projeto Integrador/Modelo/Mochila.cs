@@ -64,6 +64,12 @@ namespace Projeto_Integrador.Modelo
             this.id = aid;
             this.descricao = adescricao;
         }
+        public Mochila(int aid, string adescricao, DateTime ahorarioDeEnvio)
+        {
+            this.id = aid;
+            this.descricao = adescricao;
+            this.horarioDeEnvio = ahorarioDeEnvio;
+        }
         public Mochila(int aid)
         {
             this.id = aid;

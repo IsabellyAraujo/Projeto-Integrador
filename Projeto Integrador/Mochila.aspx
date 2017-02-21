@@ -7,19 +7,16 @@
          <h1>MOCHILA</h1>
          <%--inserir--%>
          <div id="upload">
-             <asp:FileUpload ID="FileUploadMochila" runat="server" text="Escolha um arquivo" class="btn btn-submit2" />
+             <asp:FileUpload ID="FileUploadMochila" runat="server" text="Escolha um arquivo" class="btn btn-submit2" Visible="True" />
             <asp:Button ID="ButtonEnviarArquivo" runat="server" Text="Enviar" class="btn btn-submit2" OnClick="ButtonEnviarArquivo_Click" />
         </div>
          <div id="seusarquivos">
+              <asp:TextBox ID="TextBoxDescricaoArquivoEditar" Visible="false" runat="server"  ></asp:TextBox>
+              <asp:Button ID="ButtonSalvarDescricaoArquivo" Visible="false" runat="server" Text="Salvar" OnClick="ButtonSalvarDescricaoArquivo_Click" />
+
              <asp:DataList ID="DataListMochila" runat="server" DataSourceID="ObjectDataSourceMochila" OnItemCommand="DataListMochila_ItemCommand" OnItemDataBound="DataListMochila_ItemDataBound">
-                 <EditItemTemplate>
-                     <asp:TextBox ID="TextBoxDescricaoArquivoEditar" runat="server"></asp:TextBox>
-                     <asp:Button ID="ButtonSalvarDescricaoArquivo" runat="server" Text="Salvar" />
-                 </EditItemTemplate>
+              
                  <ItemTemplate>
-                     <%--editar--%>
-                     <asp:TextBox ID="TextBoxDescricaoArquivoEditar" Visible="False" runat="server"></asp:TextBox>
-                     <asp:Button ID="ButtonSalvarDescricaoArquivo" runat="server"  Visible="False" Text="Salvar" />
                      &nbsp;<asp:Label ID="LabelDescricaoArquivo" runat="server" Text='<%# Eval("descricao") %>' />
                      <br />
                      <asp:Image ID="ImageArquivoInserido" Width="250px" runat="server" ImageUrl='<%# Eval("endereco") %>' />

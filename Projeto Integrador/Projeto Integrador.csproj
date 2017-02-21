@@ -159,6 +159,7 @@
     <Compile Include="Config2.aspx.designer.cs">
       <DependentUpon>Config2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DAL\DALBoletim.cs" />
     <Compile Include="PaginasAjuda\AjudaAgenda.aspx.cs">
       <DependentUpon>AjudaAgenda.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

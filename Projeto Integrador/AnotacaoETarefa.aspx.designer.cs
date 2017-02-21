@@ -22,6 +22,15 @@ namespace Projeto_Integrador {
         protected global::System.Web.UI.WebControls.Button ButtonCriarTarefas;
         
         /// <summary>
+        /// LabelSalvar_idTarefas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelSalvar_idTarefas;
+        
+        /// <summary>
         /// LabelTarefaDescricao control.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,15 @@ namespace Projeto_Integrador {
         protected global::System.Web.UI.WebControls.TextBox TextBoxTarefaDescricao;
         
         /// <summary>
+        /// TextBoxTarefasDescricaoEditar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxTarefasDescricaoEditar;
+        
+        /// <summary>
         /// ButtonSalvarTarefas control.
         /// </summary>
         /// <remarks>
@@ -47,6 +65,15 @@ namespace Projeto_Integrador {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonSalvarTarefas;
+        
+        /// <summary>
+        /// ButtonEditarSalvarTarefas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonEditarSalvarTarefas;
         
         /// <summary>
         /// DataListTarefa control.

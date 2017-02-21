@@ -10,12 +10,15 @@
         <div class="tarefa col-sm-10 col-sm-offset-1 col-md-4 wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
             <div class="botaocriaranotacao col-sm-12 col-md-12">
              <asp:Button ID="ButtonCriarTarefas" runat="server" Text="CRIAR" class="btn btn-submitcriar" OnClick="ButtonTarefas_Click" />
+                <asp:Label ID="LabelSalvar_idTarefas" runat="server" Text="Label" Visible="False"></asp:Label>
              </div>
             <div class="texto col-md-12 col-sm-12">
                 <asp:Label ID="LabelTarefaDescricao" runat="server" Text="Descrição" Visible="False"></asp:Label>
                 <asp:TextBox ID="TextBoxTarefaDescricao" runat="server" Visible="False" placeholder="Digite sua Tarefa"></asp:TextBox>
+                 <asp:TextBox ID="TextBoxTarefasDescricaoEditar" runat="server" Height="21px" TextMode="MultiLine" Visible="False" Width="158px"></asp:TextBox>
                 <br />
                 <asp:Button ID="ButtonSalvarTarefas" runat="server" class="btn btn-submitsalvar" Text="Salvar" Visible="False" OnClick="ButtonSalvarTarefa_Click" />
+                <asp:Button ID="ButtonEditarSalvarTarefas" runat="server" class="btn btn-submitsalvar" Text="Salvar" Visible="False" OnClick="ButtonEditarSalvarTarefas_Click1"  />
             </div>
             <asp:DataList ID="DataListTarefa" runat="server" DataSourceID="ObjectDataSourceTarefa">
                 <ItemTemplate>
@@ -23,14 +26,11 @@
                     <asp:Label ID="LabelTarefasId" runat="server" OnPreRender="LabelTarefasId_PreRender" Text='<%# Eval("id") %>'></asp:Label>
                         <asp:Label ID="descricaoLabel" runat="server" Text='<%# Eval("descricao") %>' />
                     <br />
-                    
-                    <%-- editar --%>
-                    <asp:Label ID="LabelTarefasDescricaoEditar" runat="server" Text="Descrição" Visible="False"></asp:Label>
-                    <asp:TextBox ID="TextBoxTarefasDescricaoEditar" runat="server" Height="21px" TextMode="MultiLine" Visible="False" Width="158px"></asp:TextBox>
                      <asp:Image ID="ImagePrioridade" runat="server" ImageUrl="~/Imagens/fav.png" Width="30" Height="30" OnPreRender="ImagePrioridade_PreRender" />
                     <%-- config --%>
                      <div class="configtexto col-md-12 col-sm-12">
-                         <asp:ImageButton ID="ImageButtonFavoritarAnotacoes" runat="server" ImageUrl="~/Imagens/fav.png" OnClick="ImageButtonPriorizarTarefa_Click" OnPreRender="ImageButtonPriorizarTarefa_PreRender" Width="30px" />
+                         
+                         <asp:ImageButton ID="ImageButtonFavoritarTarefas" runat="server" ImageUrl="~/Imagens/fav.png" OnClick="ImageButtonPriorizarTarefa_Click" OnPreRender="ImageButtonPriorizarTarefa_PreRender" Width="30px" />
                          <asp:LinkButton ID="LinkButtonEditarTarefas" runat="server" OnPreRender="LinkButtonEditarTarefas_PreRender" OnClick="LinkButtonEditarTarefas_Click">EDITAR</asp:LinkButton>
                          <asp:LinkButton ID="LinkButtonExcluirTarefas" runat="server" OnClick="LinkButtonExcluirTarefas_Click" OnPreRender="LinkButtonExcluirTarefas_PreRender">EXCLUIR</asp:LinkButton>
                      </div>
@@ -53,7 +53,7 @@
                 <asp:Button ID="ButtonAnotacoes" runat="server" Text="CRIAR" class="btn btn-submitcriar" OnClick="ButtonAnotacoes_Click" Width="58px" />
                 <asp:Label ID="LabelAnotacoes_idSalvar" runat="server" Text="Label" Visible="False"></asp:Label>
                 <div class="texto col-md-12 col-sm-12">
-                    <%-- favoritar --%>&nbsp;<asp:Label ID="LabelAnotacoesTitulo" runat="server" Text="Titulo" Visible="False"></asp:Label>
+                  &nbsp;<asp:Label ID="LabelAnotacoesTitulo" runat="server" Text="Titulo" Visible="False"></asp:Label>
                     <asp:TextBox ID="TextBoxAnotacoesTitulo" runat="server" Visible="False"></asp:TextBox>
                     <%-- editar --%>&nbsp;<asp:TextBox ID="TextBoxAnotacoesTituloEditar" runat="server" Visible="False"></asp:TextBox>
                     <br />

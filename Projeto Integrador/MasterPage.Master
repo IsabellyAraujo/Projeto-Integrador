@@ -46,6 +46,7 @@
                                 </a>
                                 <ul role="menu" class="sub-menu">
                                     <li><a class="active" href="AlterarSenha.aspx">Alterar Senha</a></li>
+                                    <li><a  href="Config2.aspx">Editar Dados</a></li>
                                     <li><a href="PaginasAjuda/AjudaBoletim.aspx">Ajuda</a></li>
                                     <li>
                                         <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutText="Sair" LogoutPageUrl="~/AcessoPublico/Index.aspx" LogoutAction="Redirect" />

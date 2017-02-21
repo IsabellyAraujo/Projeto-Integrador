@@ -132,8 +132,9 @@ namespace Projeto_Integrador.DAL
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@id", obj.id);
             cmd.Parameters.AddWithValue("@descricao", obj.descricao);
-            cmd.Parameters.AddWithValue("@endereco", obj.endereco);
-            cmd.Parameters.AddWithValue("@tamanhoArquivo", obj.tamanhoArquivo);
+            cmd.Parameters.AddWithValue("@horarioDeEnvio", obj.horarioDeEnvio);
+            //cmd.Parameters.AddWithValue("@endereco", obj.endereco);
+            //cmd.Parameters.AddWithValue("@tamanhoArquivo", obj.tamanhoArquivo);
 
             cmd.ExecuteNonQuery();
         }
